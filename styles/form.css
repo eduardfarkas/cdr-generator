@@ -1,0 +1,44 @@
+.input_form {
+    width: 100%;
+}
+.input_form fieldset {
+    width: calc(100% - 10px - 8px);
+    padding: 5px;
+    border-radius: 3px;
+}
+.input_form fieldset input[type=number] {
+    width: calc(100% - 6px - 5px);
+    padding: 3px;
+    margin: 1px;
+
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    background-color: white;
+    border: 1px solid #DDDDDD;
+}
+.input_form input[type=number]:focus {
+  box-shadow: 0 0 5px orange;
+  border: 1px solid orange;
+}
+.form_input_name {
+    font-size: 11px;
+}
+.input_form table td {
+    width: 100%;
+
+}
+
+#msisdn::-webkit-inner-spin-button,
+#msisdn::-webkit-outer-spin-button,
+#imsi::-webkit-inner-spin-button,
+#imsi::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+td.number_of_cdrs {
+    font-size: 13px;
+    color: rgba(216, 218, 221, 1);
+}

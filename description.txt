@@ -1,0 +1,4 @@
+CDR generator
+generates CDR for VOICE, SMS, MMS and DATA usage for all operators (Prepaid, Postpaid and M2M). <br/>
+Simple minimalstic GUI that tries to show all necessery information as easily as possible.
+I am still working on it.

@@ -1,0 +1,64 @@
+.side_menu_bar {
+    float: left;
+    position: relative;
+    height: calc(100% - 30px);
+    width: 29px;
+    border-right: 1px solid rgba(216, 218, 221, 1);
+    background-color: #fff;
+    z-index: 10;
+    font-family: 'Poppins', sans-serif;
+}
+.side_menu_item {
+    position: relative;
+    top: 100px;
+    width: 24px;
+    height: 170px;
+    font-size: 14px;
+    background-color: rgb(201, 205, 210);
+    margin-top: 10px;
+    transition: 0.2s;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    text-align: center;
+    border-top: 1px solid rgba(216, 218, 221, 1);
+    border-bottom: 1px solid rgba(216, 218, 221, 1);
+    padding-right: 6px;
+}
+.side_menu_item:hover {
+    background-color: rgb(29, 33, 41) !important;
+    color: white !important;
+
+}
+.sliding_box_input_data {
+    position: absolute;
+    width: 220px;
+    z-index: 2;
+    height: calc(100% - 10px - 30px);
+    min-height: calc(775px - 10px - 30px);
+    left: -230px;
+    top: 30px;
+    background-color: rgb(29, 33, 41);
+    color: #fff;
+    transition: 0.5s;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+.sliding_box_help {
+    overflow: auto;
+    position: absolute;
+    width: 700px;
+    z-index: 3;
+    height: calc(100% - 20px - 30px);
+    min-height: calc(775px - 10px - 30px);
+    top: 30px;
+    left: -730px;
+    background-color: rgb(29, 33, 41);
+    color: #fff;
+    transition: 0.5s;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.help_div {
+    border-left: 1px solid white;
+    padding-left: 15px;
+}
