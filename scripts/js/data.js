@@ -2096,7 +2096,7 @@ function get_data() {
                     {
                         name: "19005",
                         comment: "VOC Edice2 + VOE1 Francouzská Guyana",
-                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               592602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               594602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
                         group: "gvoice"
                     },
                     {
@@ -2368,7 +2368,7 @@ function get_data() {
                     {
                         name: "19037",
                         comment: "VOC Edice1 Francouzská Guyana",
-                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               592602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               594602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
                         group: "gvoice"
                     },
                     {
@@ -2417,7 +2417,7 @@ function get_data() {
                     //-----------------------------------------
                     {
                         name: "19042",
-                        comment: "VOE2 VOE1 Belgie",
+                        comment: "VOE2 Belgie",
                         value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               32602999999             5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
                         group: "gvoice"
                     },
@@ -2544,7 +2544,7 @@ function get_data() {
                     {
                         name: "19042",
                         comment: "VOE2 Francouzská Guyana",
-                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               592602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+                        value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               594602999999            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2300  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
                         group: "gvoice"
                     },
                     {
@@ -4319,7 +4319,7 @@ function get_data() {
                         group: "xml"
                     },
                     {
-                        name: "20101",
+                        name: "20101-MT",
                         comment: "roam voice MT EU -> ČR",
                         value: "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
@@ -4399,7 +4399,7 @@ function get_data() {
                         group: "xml"
                     },
                     {
-                        name: "20201",
+                        name: "20201-MT",
                         comment: "roam voice MT nonEU -> ČR",
                         value: "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
@@ -4479,7 +4479,7 @@ function get_data() {
                         group: "xml"
                     },
                     {
-                        name: "20301",
+                        name: "20301-MT",
                         comment: "roam voice MT WORLD -> ČR",
                         value: "\
 <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
@@ -5202,7 +5202,7 @@ function get_data() {
                     {
                         name: "19005",
                         comment: "VOC Edice2 + VOE1 Francouzská Guyana",
-                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  592602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
+                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  594602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
                         group: "sms"
                     },
                     {
@@ -5468,7 +5468,7 @@ function get_data() {
                     {
                         name: "19037",
                         comment: "VOC Edice1 Francouzská Guyana",
-                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  592602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
+                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  594602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
                         group: "sms"
                     },
                     {
@@ -5644,7 +5644,7 @@ function get_data() {
                     {
                         name: "19042",
                         comment: "VOE2 Francouzská Guyana",
-                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  592602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
+                        value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  594602302522                  5  5  420602020000        2302  0  1542550  " + timestamp(),
                         group: "sms"
                     },
                     {
@@ -6248,7 +6248,7 @@ function get_data() {
                     {
                         name: "19005",
                         comment: "VOC Edice2 + VOE1 Francouzská Guyana",
-                        value: "06" + imsi + " " + msisdn + "      592772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
+                        value: "06" + imsi + " " + msisdn + "      594772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
                         group: "mms"
                     },
                     {
@@ -6520,7 +6520,7 @@ function get_data() {
                     {
                         name: "19037",
                         comment: "VOC Edice1 Francouzská Guyana",
-                        value: "06" + imsi + " " + msisdn + "      592772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
+                        value: "06" + imsi + " " + msisdn + "      594772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
                         group: "mms"
                     },
                     {
@@ -6623,7 +6623,7 @@ function get_data() {
                     },
                     {
                         name: "19042",
-                        comment: "VOE2 VOE1 Litva",
+                        comment: "VOE2 Litva",
                         value: "06" + imsi + " " + msisdn + "      370772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
                         group: "mms"
                     },
@@ -6690,7 +6690,7 @@ function get_data() {
                     {
                         name: "19042",
                         comment: "VOE2 Francouzská Guyana",
-                        value: "06" + imsi + " " + msisdn + "      592772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
+                        value: "06" + imsi + " " + msisdn + "      594772569856                                                                                                                    " + timestamp() + "                4216020230                                                         4606020230                                23110",
                         group: "mms"
                     },
                     {

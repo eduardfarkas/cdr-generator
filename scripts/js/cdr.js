@@ -245,7 +245,7 @@ function download_cdr() {
                 });
 
             } else {
-                var content = $( '#cdr_container' ).val();
+                var content = $( '#cdr_container' ).val().split("----------------------------------------------------------------------------------------------------\r\n")[0];
                 var filename = "";
                 $.each( data, function( data_operator, data_operators ) {
                     $.each( data_operators, function( data_usageType, cdr ) {
