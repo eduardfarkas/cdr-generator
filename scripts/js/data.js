@@ -1,4 +1,4 @@
-function get_data() {
+function get_data(checked_operator, checked_usageType) {
     /*
 
       group = extension of file
@@ -8518,5 +8518,5 @@ function get_data() {
         });
     });
 
-    return data;
+    return data.checked_operator.checked_usageType;
 }

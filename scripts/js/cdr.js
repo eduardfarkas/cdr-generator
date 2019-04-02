@@ -1,8 +1,7 @@
 function show_cdr_menu_content() {
-    var data = get_data();
     var operator = $('input[name=operator]:checked', '.input_form').val();
     var usageType = $('input[name=usage]:checked', '.input_form').val();
-
+    var cdrs = get_data(operator, usageType);
     var groups = get_groups(operator, usageType);
 
     //for each group fill menu
@@ -21,25 +20,25 @@ function show_cdr_menu_content() {
                 "</thead>" +
                 "<tbody>";
 
-        $.each( data, function( data_operator, data_operators ) {
-            if(data_operator == operator) {
-                $.each( data_operators, function( data_usageType, cdr ) {
-                    if(data_usageType == usageType) { //for each group (box)
+        //$.each( data, function( data_operator, data_operators ) {
+            //if(data_operator == operator) {
+                //$.each( data_operators, function( data_usageType, cdr ) {
+                    //if(data_usageType == usageType) { //for each group (box)
                         
                         //[id, chargingClass, group, chargingCode]                        
                         var lastCdr =       [-1, 0, -1, 0]; //last used cdr
                         var currentCdr =    [-1, 0, -1, 0];
                         var nextCdr =       [-1, 0, -1, 0, false]; // true = is last, false = not last
 
-                        for(j = 0; j < cdr.length; j++) { //for each cdr         
-                            if(cdr[j].group == groups[i]) { //set box for each cdrs group
+                        for(j = 0; j < cdrs.length; j++) { //for each cdr         
+                            if(cdrs[j].group == groups[i]) { //set box for each cdrs group
                                 
-                                currentCdr = [cdr[j].id, cdr[j].name.substring(0, 2), groups[i], cdr[j].name];
+                                currentCdr = [cdrs[j].id, cdrs[j].name.substring(0, 2), groups[i], cdrs[j].name];
                                 nextCdr = [
-                                    (j+1 == cdr.length) ? (cdr[j].id) : (cdr[j+1].id), //id
-                                    (j+1 == cdr.length) ? (cdr[j].name.substring(0, 2)) : (cdr[j+1].name.substring(0, 2)), //charging class
-                                    (j+1 == cdr.length) ? (cdr[j].group) : (cdr[j+1].group),
-                                    (j+1 == cdr.length) ? (cdr[j].name) : (cdr[j+1].name),
+                                    (j+1 == cdr.length) ? (cdrs[j].id) : (cdrs[j+1].id), //id
+                                    (j+1 == cdr.length) ? (cdrs[j].name.substring(0, 2)) : (cdrs[j+1].name.substring(0, 2)), //charging class
+                                    (j+1 == cdr.length) ? (cdrs[j].group) : (cdrs[j+1].group),
+                                    (j+1 == cdr.length) ? (cdrs[j].name) : (cdrs[j+1].name),
                                     (j+1 == cdr.length) ? ( true ) : (false)                                  
                                 ];
 
@@ -50,10 +49,10 @@ function show_cdr_menu_content() {
   
                                 if((currentCdr[0] > lastCdr[0] && currentCdr[1] != lastCdr[1]) || currentCdr[2] != lastCdr[2]) {
                                     if(nextCdr[1] != currentCdr[1] || nextCdr[4] == true) {
-                                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdr[j].name.substring(0, 2) + "' id='group" + cdr[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></td>";
+                                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></td>";
                                     }
                                     else {
-                                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdr[j].name.substring(0, 2) + "' id='group" + cdr[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></div></td>";
+                                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></div></td>";
                                     }
                                 }
                                 else if((nextCdr[0] > currentCdr[0] && nextCdr[1] != currentCdr[1]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
@@ -75,7 +74,7 @@ function show_cdr_menu_content() {
                                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'></td>";
                                     }
                                     else {
-                                        chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'><div><img src='images/charging-code-start.png'></img><input type='checkbox' name='cdr_chargingCode' class='cdr-chargingCode " + groups[i] + " " + cdr[j].name.substring(0, 2) + " " + cdr[j].name + "' id='group" + cdr[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingCode(this);'></div></td>";
+                                        chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'><div><img src='images/charging-code-start.png'></img><input type='checkbox' name='cdr_chargingCode' class='cdr-chargingCode " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingCode(this);'></div></td>";
                                     }
                                 }
                                 else if((nextCdr[0] > currentCdr[0] && nextCdr[3] != currentCdr[3]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
@@ -91,22 +90,22 @@ function show_cdr_menu_content() {
                                 }   
      
                                 //-------------------------------------
-                                lastCdr = [cdr[j].id, cdr[j].name.substring(0, 2), groups[i], cdr[j].name];
+                                lastCdr = [cdrs[j].id, cdrs[j].name.substring(0, 2), groups[i], cdrs[j].name];
 
                                 box_content +=
                                 "<tr class='cdr_tr'>" +
                                     chargingClass +
                                     chargingCode +                            
-                                    "<td class='cdr_name' onclick='check_cdr(this);'>" + cdr[j].name + "</td>" +
-                                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdr[j].name.substring(0, 2) + " " + cdr[j].name + "' id='" + cdr[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount();'></td>" +
-                                    "<td class='cdr_comment'>" + cdr[j].comment + "</td>"
+                                    "<td class='cdr_name' onclick='check_cdr(this);'>" + cdrs[j].name + "</td>" +
+                                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount();'></td>" +
+                                    "<td class='cdr_comment'>" + cdrs[j].comment + "</td>"
                                 "</tr>";
                             }
                         }
-                    }
-                });
-            }
-        });
+                    //}
+                //});
+            //}
+        //});
 
         box_content += "</tbody></table>";
 
@@ -135,27 +134,27 @@ function show_cdr() {
             $.each( data_operators, function( data_usageType, cdr ) {
 
                 for(j = 0; j < cdr.length; j++) { //for each cdr
-                    if(cdr[j].id == checkedCheckboxes[i].id) { //set box for each group
+                    if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
 
-                        if(cdr[j].group == "xml") {
-                            //cdrs += cdr[j].name + " - " + cdr[j].comment + ":\r\n";
+                        if(cdrs[j].group == "xml") {
+                            //cdrs += cdrs[j].name + " - " + cdrs[j].comment + ":\r\n";
                             //cdrs += "\r\n";
-                            cdrs += cdr[j].value + "\r\n";
+                            cdrs += cdrs[j].value + "\r\n";
                             cdrs += "----------------------------------------------------------------------------------------------------\r\n";
                         } else {
 
                             if(data_usageType == "sms") {
                                 for(k = 0; k < sms_units; k++) {
-                                    cdrs += cdr[j].value + "\r\n";
+                                    cdrs += cdrs[j].value + "\r\n";
                                 }
                             }
                             if(data_usageType == "mms") {
                                 for(k = 0; k < mms_units; k++) {
-                                    cdrs += cdr[j].value + "\r\n";
+                                    cdrs += cdrs[j].value + "\r\n";
                                 }
                             }
                             else if(data_usageType != "sms" && data_usageType != "mms") {
-                                cdrs += cdr[j].value + "\r\n";
+                                cdrs += cdrs[j].value + "\r\n";
                             }
 
                         }
@@ -225,8 +224,8 @@ function download_cdr() {
                     $.each( data, function( data_operator, data_operators ) {
                         $.each( data_operators, function( data_usageType, cdr ) {
                             for(j = 0; j < cdr.length; j++) { //for each cdr
-                                if(cdr[j].id == $( 'input[class^=cdr]:checked' )[i].id) { //set box for each group
-                                    name_array[i] = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
+                                if(cdrs[j].id == $( 'input[class^=cdr]:checked' )[i].id) { //set box for each group
+                                    name_array[i] = timestamp() + "_" + cdrs[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdrs[j].group;
                                 }
                             }
                         });
@@ -250,8 +249,8 @@ function download_cdr() {
                 $.each( data, function( data_operator, data_operators ) {
                     $.each( data_operators, function( data_usageType, cdr ) {
                         for(j = 0; j < cdr.length; j++) { //for each cdr
-                            if(cdr[j].id == $( 'input[class^=cdr]:checked' )[0].id) { //set box for each group
-                                filename = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
+                            if(cdrs[j].id == $( 'input[class^=cdr]:checked' )[0].id) { //set box for each group
+                                filename = timestamp() + "_" + cdrs[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdrs[j].group;
                             }
                         }
                     });

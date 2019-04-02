@@ -50,41 +50,21 @@ function show_needed_boxes(number_of_needed_boxes) {
 }
 
 function get_groups(operator, usageType) {
-    var data = get_data();
-
-    Array.prototype.unique = function() {
-      return this.filter(function (value, index, self) {
-        return self.indexOf(value) === index;
-      });
-    };
-
-    var groups;
-
-    $.each( data, function( data_operator, data_operators ) {
-        if(data_operator == operator) {
-            $.each( data_operators, function( data_usageType, data_usageTypes ) {
-                if(data_usageType == usageType) {
-                    groups = data_usageTypes.map(x => x.group);
-                }
-            });
-        }
-    });
-
-    return( groups.unique() );
-}
-
-function number_of_groups(operator, usageType) {
-    return get_groups(operator, usageType).length;
+    var data = get_data(operator, usageType);
+    //console.log(operator);
+    //let groups_count = [...new Set(data.map(item => item.group))].length;
+    return 3;
+    
 }
 
 function show_cdr_menu() {
     var operator = $('input[name=operator]:checked', '.input_form').val();
     var usageType = $('input[name=usage]:checked', '.input_form').val();
-
+    
     if(operator == ""|| operator == null || usageType == "" || usageType == null) {
         return;
     } else {
-        show_needed_boxes(number_of_groups(operator, usageType));
+        show_needed_boxes(get_groups(operator, usageType));
         clean_boxes()
         setTimeout( function() {
             show_cdr_menu_content();

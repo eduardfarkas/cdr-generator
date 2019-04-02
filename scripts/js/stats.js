@@ -27,7 +27,10 @@ function save_visit_info() {
 
 $( document ).ready( function() {
     //----------------------------------CDR-----------------------------------//
-    var data = get_data();
+    var operator = $('input[name=operator]:checked', '.input_form').val();
+    var usageType = $('input[name=usage]:checked', '.input_form').val();
+
+    var data = get_data(operator, usageType);
 
     var count_cdr = 0;
     var prp_count_cdr = 0;
