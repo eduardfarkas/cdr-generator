@@ -51,10 +51,8 @@ function show_needed_boxes(number_of_needed_boxes) {
 
 function get_groups(operator, usageType) {
     var data = get_data(operator, usageType);
-    //console.log(operator);
-    //let groups_count = [...new Set(data.map(item => item.group))].length;
-    return 3;
-    
+    let groups = [...new Set(data.map(item => item.group))];
+    return groups;  
 }
 
 function show_cdr_menu() {
@@ -64,8 +62,8 @@ function show_cdr_menu() {
     if(operator == ""|| operator == null || usageType == "" || usageType == null) {
         return;
     } else {
-        show_needed_boxes(get_groups(operator, usageType));
-        clean_boxes()
+        show_needed_boxes(get_groups(operator, usageType).length);  
+        clean_boxes();
         setTimeout( function() {
             show_cdr_menu_content();
         }, 500);
@@ -80,10 +78,9 @@ function clean_boxes() {
         $( '#box2' ).html("");
         $( '#box3' ).html("");
         $( '#box4' ).html("");
-        $( '#cdr_container' ).val("");
+        $( '#cdr_container' ).val(""); //doesnt work, why the fuck... :D
         $( '.box_table' ).css({ 'opacity' : 1 });;
     }, 500);
-
 }
 
 $( window ).on('resize', function(){

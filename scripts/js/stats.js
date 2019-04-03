@@ -27,10 +27,7 @@ function save_visit_info() {
 
 $( document ).ready( function() {
     //----------------------------------CDR-----------------------------------//
-    var operator = $('input[name=operator]:checked', '.input_form').val();
-    var usageType = $('input[name=usage]:checked', '.input_form').val();
-
-    var data = get_data(operator, usageType);
+    var data = get_data("all", "all");
 
     var count_cdr = 0;
     var prp_count_cdr = 0;
@@ -147,7 +144,7 @@ function add_download_info(howMany, operator, usage, group) {
 }
 
 function show_count_usg_cdr(operator) {
-    var data = get_data();
+    var data = get_data("all", "all");
 
     var count_voice = 0;
     var count_sms = 0;

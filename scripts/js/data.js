@@ -8518,5 +8518,49 @@ function get_data(checked_operator, checked_usageType) {
         });
     });
 
-    return data.checked_operator.checked_usageType;
+    if(checked_operator == "all" && checked_usageType == "all") {
+      return data;
+    } 
+    if(checked_operator == "postpaid") {
+      if(checked_usageType == "voice") {
+        return data.postpaid.voice;
+      }
+      if(checked_usageType == "sms") {
+        return data.postpaid.sms;
+      }
+      if(checked_usageType == "mms") {
+        return data.postpaid.mms;
+      }
+      if(checked_usageType == "data") {
+        return data.postpaid.data;
+      }
+    }
+    if(checked_operator == "prepaid") {
+      if(checked_usageType == "voice") {
+        return data.prepaid.voice;
+      }
+      if(checked_usageType == "sms") {
+        return data.prepaid.sms;
+      }
+      if(checked_usageType == "mms") {
+        return data.prepaid.mms;
+      }
+      if(checked_usageType == "data") {
+        return data.prepaid.data;
+      }
+    }
+    if(checked_operator == "m2m") {
+      if(checked_usageType == "voice") {
+        return data.m2m.voice;
+      }
+      if(checked_usageType == "sms") {
+        return data.m2m.sms;
+      }
+      if(checked_usageType == "mms") {
+        return data.m2m.mms;
+      }
+      if(checked_usageType == "data") {
+        return data.m2m.data;
+      }
+    } 
 }
