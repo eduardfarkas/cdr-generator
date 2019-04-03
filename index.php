@@ -259,7 +259,7 @@
                         <div class="info_value" id="info_checked_cdrCount">0 z 0</div>
                     </div>
                 </div>
-
+        
                 <div class="top_menu_item download_button">
                     <input class="xd"  id="download_button" type="button" value="DOWNLOAD" onclick="download_cdr();" disabled>
                 </div>
@@ -267,6 +267,13 @@
                     <div class="tm_s_d_c">
                         STATISTIKY
                     </div>
+                </div>
+                <div class="top_menu_item github">
+                    <a href="https://github.com/eduardfarkas/cdr-generator" target="_blank">
+                        <div>
+                            <img src="images/github-logo.png">
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="side_menu_bar">
