@@ -25,6 +25,7 @@ function show_cdr_menu_content() {
         var currentCdr =    [-1, 0, -1, 0];
         var nextCdr =       [-1, 0, -1, 0, false]; // true = is last, false = not last
 
+        
         for(j = 0; j < cdrs.length; j++) { //for each cdr         
             if(cdrs[j].group == groups[i]) { //set box for each cdrs group
                 
@@ -47,7 +48,7 @@ function show_cdr_menu_content() {
                         chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></td>";
                     }
                     else {
-                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></div></td>";
+                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingClass(this);'></div></td>";
                     }
                 }
                 else if((nextCdr[0] > currentCdr[0] && nextCdr[1] != currentCdr[1]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
@@ -69,7 +70,7 @@ function show_cdr_menu_content() {
                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'></td>";
                     }
                     else {
-                        chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'><div><img src='images/charging-code-start.png'></img><input type='checkbox' name='cdr_chargingCode' class='cdr-chargingCode " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingCode(this);'></div></td>";
+                        chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'><div><img src='images/charging-code-start.png'></img><input type='checkbox' name='cdr_chargingCode' class='cdr-chargingCode " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingCode(this);'></div></td>";
                     }
                 }
                 else if((nextCdr[0] > currentCdr[0] && nextCdr[3] != currentCdr[3]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
@@ -329,6 +330,7 @@ function check_all_by_chargingClass(checkbox) {
         $( "." + clicked_chargingClass + "." + clicked_group ).not(checkbox).prop('checked', false);
         show_cdr();
     }
+    enable_download();
 }
 
 function check_all_by_chargingCode(checkbox) {
@@ -342,6 +344,7 @@ function check_all_by_chargingCode(checkbox) {
         $( "." + clicked_chargingCode + "." + clicked_group ).not(checkbox).prop('checked', false);
         show_cdr();
     }  
+    enable_download();
 }
 
 //clicking on name cell

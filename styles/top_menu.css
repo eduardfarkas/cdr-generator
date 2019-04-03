@@ -19,6 +19,24 @@
     text-align: center;
     border-right: 1px solid rgba(216, 218, 221, 1);
 }
+.github {
+    float: right;
+    border-right: 0px; 
+    border-left: 1px solid rgba(216, 218, 221, 1);
+}
+.github div {
+    width: 100%;
+    height: 100%;
+}
+.github div img {
+    position: relative;
+    top: 1px;
+    vertical-align: center;
+    height: 90%;
+}
+.github:hover {
+    background-color: orange;
+}
 .download_button {
     float: right;
     margin-right: 50px;
