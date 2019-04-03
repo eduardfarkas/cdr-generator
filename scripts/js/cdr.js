@@ -210,8 +210,8 @@ function download_cdr() {
                     $.each( data, function( data_operator, data_operators ) {
                         $.each( data_operators, function( data_usageType, cdr ) {
                             for(j = 0; j < cdr.length; j++) { //for each cdr
-                                if(cdrs[j].id == $( 'input[class^=cdr]:checked' )[i].id) { //set box for each group
-                                    name_array[i] = timestamp() + "_" + cdrs[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdrs[j].group;
+                                if(cdr[j].id == $( 'input[class^=cdr]:checked' )[i].id) { //set box for each group
+                                    name_array[i] = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
                                 }
                             }
                         });
@@ -235,8 +235,8 @@ function download_cdr() {
                 $.each( data, function( data_operator, data_operators ) {
                     $.each( data_operators, function( data_usageType, cdr ) {
                         for(j = 0; j < cdr.length; j++) { //for each cdr
-                            if(cdrs[j].id == $( 'input[class^=cdr]:checked' )[0].id) { //set box for each group
-                                filename = timestamp() + "_" + cdrs[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdrs[j].group;
+                            if(cdr[j].id == $( 'input[class^=cdr]:checked' )[0].id) { //set box for each group
+                                filename = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
                             }
                         }
                     });
