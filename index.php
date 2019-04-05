@@ -35,25 +35,7 @@
         <script src="scripts/js/boxes.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/boxes.js')); ?>"></script>
         <script src="scripts/js/cdr.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/cdr.js')); ?>"></script>
         <script src="scripts/js/side_menu.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/side_menu.js')); ?>"></script>
-
-        <script>
-            $( function() {
-                $( "#resizable" ).resizable({
-                    handles: 's', //south = bottom
-                    minHeight: 120,
-                    maxHeight: 670,
-                    resize: (function() { //on resize trigger this function
-                        var firstRow = $( '.first_row_boxes' ).height();                      
-                        var wrapper = $( '.wrapper' ).height();
-                        
-                        $( '.second_row_boxes' ).css('height', (wrapper - firstRow) + "px");
-
-                        $( '.box_table > tbody' ).css('height', ($( '.box' ).height() - 22) + "px");
-                        $( '.box_table > thead > tr' ).css('width', ($( '.box' ).width()) + "px");
-                    })                    
-                });
-            });
-        </script>
+        <script src="scripts/js/resizing.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/resizing.js')); ?>"></script>
 
         <!--STYLES-->
         <link rel="stylesheet" href="styles/jQuery-ui-theme.css">
@@ -219,6 +201,8 @@
                 <ul class="sm_h_c">
                     <li class="sm_h_c">V levém horním rohu je datum poslední aktualizace CDR databáze</li>
                     <li class="sm_h_c">V řádku nadpisu tabulky se dají všechny CDR označit nebo zrušit</li>
+                    <li class="sm_h_c">CDR lze zaškrtnout podle ChargingClass nebo ChargingCode</li>
+                    <li class="sm_h_c">Výšku tabulek (boxů) lze potažením mezery (uprostřed stránky) přizpůsobit dle libosti</li>
                     <li class="sm_h_c">Lze označit vždy CDR jen z jedné skupiny (jedné tabulky)</li>
                     <li class="sm_h_c">Voice a data mají počet jednotek přímo v CDR, SMS a MMS jsou kopírovány (tzn. 2 SMS se zobrazí jako 2x CDR)</li>
                     <li class="sm_h_c">Při přepnutí operátora nebo typu usage se automaticky přizpůsobí menu podle počtu skupin v DB. (Např. PoP SMS mají 3 skupiny - sms, npp, dms, zobrazí se tedy 3 tabulky + tabulka s CDR)</li>
