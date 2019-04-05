@@ -27,6 +27,7 @@
         <script src="scripts/js/jszip.js"></script>
         <script src="scripts/js/fileSaver.js"></script>
         <script src="scripts/js/cookie.js"></script>
+        <script src="scripts/js/jQuery-ui-v1.12.1.js"></script>
 
         <script src="scripts/js/data.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/data.js')); ?>"></script>
         <script src="scripts/js/stats.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/stats.js')); ?>"></script>
@@ -35,7 +36,28 @@
         <script src="scripts/js/cdr.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/cdr.js')); ?>"></script>
         <script src="scripts/js/side_menu.js?version=<?php echo date ("YmdHis.", filemtime('scripts/js/side_menu.js')); ?>"></script>
 
+        <script>
+            $( function() {
+                $( "#resizable" ).resizable({
+                    handles: 's', //south = bottom
+                    minHeight: 120,
+                    maxHeight: 670,
+                    resize: (function() { //on resize trigger this function
+                        var firstRow = $( '.first_row_boxes' ).height();                      
+                        var wrapper = $( '.wrapper' ).height();
+                        
+                        $( '.second_row_boxes' ).css('height', (wrapper - firstRow) + "px");
+
+                        $( '.box_table > tbody' ).css('height', ($( '.box' ).height() - 22) + "px");
+                        $( '.box_table > thead > tr' ).css('width', ($( '.box' ).width()) + "px");
+                    })                    
+                });
+            });
+        </script>
+
         <!--STYLES-->
+        <link rel="stylesheet" href="styles/jQuery-ui-theme.css">
+        
         <link rel="stylesheet" href="styles/main.css?version=<?php echo date ("YmdHis.", filemtime('styles/main.css')); ?>">
         <link rel="stylesheet" href="styles/form.css?version=<?php echo date ("YmdHis.", filemtime('styles/form.css')); ?>">
         <link rel="stylesheet" href="styles/side_menu.css?version=<?php echo date ("YmdHis.", filemtime('styles/side_menu.css')); ?>">
@@ -285,7 +307,7 @@
                 </div>
             </div>
             <div class="wrapper">
-                <div class="first_row_boxes">
+                <div class="first_row_boxes" id="resizable" class="ui-widget-content">
                     <div class="box_container a">
                         <div class="box" id="box0">
 
