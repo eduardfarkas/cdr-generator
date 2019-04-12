@@ -260,7 +260,18 @@ function download_cdr() {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
-                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                if($('input[name=usage]:checked', '.input_form').val() == "sms") {
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("sms usage download info");
+                }
+                if($('input[name=usage]:checked', '.input_form').val() == "mms") {
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("mms usage download info");
+                } 
+                if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("voice/data usage download info");
+                }
             } else {
                 var content = $( '#cdr_container' ).val();
                 var filename = timestamp() + "_generated_." + group;
@@ -269,7 +280,18 @@ function download_cdr() {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
-                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                if($('input[name=usage]:checked', '.input_form').val() == "sms") {
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("sms usage download info");
+                }
+                if($('input[name=usage]:checked', '.input_form').val() == "mms") {
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("mms usage download info");
+                } 
+                if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    console.log("voice/data usage download info");
+                }
             }
         }
     }
