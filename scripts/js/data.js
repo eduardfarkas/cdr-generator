@@ -287,79 +287,79 @@ function get_data(checked_operator, checked_usageType) {
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Albánie",
           value: "1020|" + msisdn + "||355602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Andorra",
           value: "1020|" + msisdn + "||376602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bělorusko",
           value: "1020|" + msisdn + "||375602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bosna a Hercegovina",
           value: "1020|" + msisdn + "||387602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Černá Hora",
           value: "1020|" + msisdn + "||382602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Makedonie",
           value: "1020|" + msisdn + "||389602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Moldavsko",
           value: "1020|" + msisdn + "||373602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Monako",
           value: "1020|" + msisdn + "||377602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB San Marino",
           value: "1020|" + msisdn + "||378602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Srbsko",
           value: "1020|" + msisdn + "||381602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Švýcarsko",
           value: "1020|" + msisdn + "||41602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Ukrajina",
           value: "1020|" + msisdn + "||380602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Wallis a Futuna",
           value: "1020|" + msisdn + "||681602123123||42060202510||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
@@ -937,79 +937,79 @@ function get_data(checked_operator, checked_usageType) {
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Albánie",
           value: msisdn + "|355602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Andorra",
           value: msisdn + "|376602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bělorusko",
           value: msisdn + "|375602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bosna a Hercegovina",
           value: msisdn + "|387602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Černá Hora",
           value: msisdn + "|382602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Makedonie",
           value: msisdn + "|389602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Moldavsko",
           value: msisdn + "|373602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Monako",
           value: msisdn + "|377602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB San Marino",
           value: msisdn + "|378602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Srbsko",
           value: msisdn + "|381602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Švýcarsko",
           value: msisdn + "|41602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Ukrajina",
           value: msisdn + "|380602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Wallis a Futuna",
           value: msisdn + "|681602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
@@ -1491,79 +1491,79 @@ function get_data(checked_operator, checked_usageType) {
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Albánie",
           value: msisdn + "|355602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Andorra",
           value: msisdn + "|376602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bělorusko",
           value: msisdn + "|375602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Bosna a Hercegovina",
           value: msisdn + "|387602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Černá Hora",
           value: msisdn + "|382602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Makedonie",
           value: msisdn + "|389602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Moldavsko",
           value: msisdn + "|373602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Monako",
           value: msisdn + "|377602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB San Marino",
           value: msisdn + "|378602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Srbsko",
           value: msisdn + "|381602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Švýcarsko",
           value: msisdn + "|41602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Ukrajina",
           value: msisdn + "|380602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
         },
         {
-          name: "19005",
+          name: "19004",
           comment: "VOA + VOB Wallis a Futuna",
           value: msisdn + "|681602123123|420602023000|4542F00729||" + timestamp() + "|",
           group: "mmo_mms01"
