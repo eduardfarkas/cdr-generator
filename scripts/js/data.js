@@ -4797,6 +4797,36 @@ function get_data(checked_operator, checked_usageType) {
   </transferBatch>\n\
 </DataInterChange>",
           group: "xml"
+        },
+        {
+          name: "24001",
+          comment: "VPN on-net",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1601  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24002",
+          comment: "VPN TEF mobile + other VOX",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1605  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24003",
+          comment: "VPN other mobile operators",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1606  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24004",
+          comment: "VPN fix",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24005",
+          comment: "VPN others (e.g. Int. number)",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               421602123123            5  0  19 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
         }
       ],
       sms: [ //groups: sms, npp, dms
