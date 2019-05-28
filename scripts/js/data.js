@@ -1774,11 +1774,19 @@ function get_data(checked_operator, checked_usageType) {
           value: msisdn + "|10004|498591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dti_grds03"
         },
+        /*
         {
           name: "20616",
           comment: "Data consumption in EU - 444",
           value: msisdn + "|212.77.15.194|20|" + data_units + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dtu_grds03"
+        },
+        */
+        {
+          name: "20616",
+          comment: "Data consumption in EU - 444",
+          value: msisdn + "|20616|498591620|UTRAN||1897886976||" + timestamp() + "|",
+          group: "dti_grds03"
         },
         {
           name: "20617",
