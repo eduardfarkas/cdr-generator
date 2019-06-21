@@ -8761,25 +8761,25 @@ function get_data(checked_operator, checked_usageType) {
         {
           name: "home",
           comment: "",
-          value: "07" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          160.218.032.068                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "07" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          160.218.032.068                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z1",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.016.219.096                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.016.219.096                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z2",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.239.182.193                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.239.182.193                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z3",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.027.231.001                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.027.231.001                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         }
       ]
