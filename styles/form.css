@@ -7,7 +7,7 @@
     border-radius: 3px;
 }
 legend {
-    margin-bottom: -5px; 
+    margin-bottom: -10px; 
 }
 .input_form fieldset input[type=number], input[type=text] {
     width: calc(100% - 6px - 5px);
