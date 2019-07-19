@@ -1774,11 +1774,19 @@ function get_data(checked_operator, checked_usageType) {
           value: msisdn + "|10004|498591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dti_grds03"
         },
+        /*
         {
           name: "20616",
           comment: "Data consumption in EU - 444",
           value: msisdn + "|212.77.15.194|20|" + data_units + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dtu_grds03"
+        },
+        */
+        {
+          name: "20616",
+          comment: "Data consumption in EU - 444",
+          value: msisdn + "|20616|498591620|UTRAN||1897886976||" + timestamp() + "|",
+          group: "dti_grds03"
         },
         {
           name: "20617",
@@ -4797,6 +4805,36 @@ function get_data(checked_operator, checked_usageType) {
   </transferBatch>\n\
 </DataInterChange>",
           group: "xml"
+        },
+        {
+          name: "24001",
+          comment: "VPN on-net",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1601  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24002",
+          comment: "VPN TEF mobile + other VOX",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1605  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24003",
+          comment: "VPN other mobile operators",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1606  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24004",
+          comment: "VPN fix",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24005",
+          comment: "VPN others (e.g. Int. number)",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               421602123123            5  0  19 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
         }
       ],
       sms: [ //groups: sms, npp, dms
@@ -8723,25 +8761,25 @@ function get_data(checked_operator, checked_usageType) {
         {
           name: "home",
           comment: "",
-          value: "07" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          160.218.032.068                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "07" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          160.218.032.068                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z1",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.016.219.096                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.016.219.096                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z2",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.239.182.193                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.239.182.193                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z3",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.027.231.001                      " + format_usage(data_units) + "                  160.218.032.068                         ",
+          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.027.231.001                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
           group: "lte"
         }
       ]
