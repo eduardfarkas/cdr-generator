@@ -6,9 +6,10 @@ function get_data(checked_operator, checked_usageType) {
   */
   var msisdn = $('#msisdn').val();
   var imsi = $('#imsi').val();
-  var data_units = $('#data_units').val();
+  var data_units = format_usage($('#data_units').val());
   var voice_units = $('#voice_units').val();
   var formated_voice_units = format_voice_units($('#voice_units').val());
+  var formated_apn_name = format_apn($('#apn').val());
 
   var data =
   {
@@ -7073,55 +7074,55 @@ function get_data(checked_operator, checked_usageType) {
         {
           name: "data",
           comment: "data home placene",
-          value: "04" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57160.218.032.0680000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "04" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57160.218.032.0680000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data home zdarma",
-          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57160.218.032.0680000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57160.218.032.0680000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data eu placene",
-          value: "04" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG60093.186.142.0020000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "04" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG60093.186.142.0020000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data eu zdarma PG",
-          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000PG60093.186.142.0020000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000PG60093.186.142.0020000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data eu_fl",
-          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL60093.186.142.0020000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "04" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL60093.186.142.0020000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data z2 free",
-          value: "06" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57193.239.182.1930000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "06" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57193.239.182.1930000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data z2 placene",
-          value: "05" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57193.239.182.1930000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "05" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57193.239.182.1930000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data z3 free - IP 193.027.231.001 upravena (přidaná 0 před 27)",
-          value: "06" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57193.027.231.0010000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "06" + imsi + " " + msisdn + "      internet_zdarmaCAP                                                                                                              " + timestamp() + "000001000000FL57193.027.231.0010000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         },
         {
           name: "data",
           comment: "data z3 placene - IP 193.027.231.001 upravena (přidaná 0 před 27)",
-          value: "05" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57193.027.231.0010000000000000023020000" + format_usage(data_units) + "000000000000000000160.218.032.06800000000000000000000000000000000000",
+          value: "05" + imsi + " " + msisdn + "      GOternet                                                                                                                        " + timestamp() + "000001000000PG57193.027.231.0010000000000000023020000" + data_units + "000000000000000000160.218.032.06800000000000000000000000000000000000",
           group: "lte"
         }
       ]
@@ -8761,25 +8762,25 @@ function get_data(checked_operator, checked_usageType) {
         {
           name: "home",
           comment: "",
-          value: "07" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          160.218.032.068                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
+          value: "07" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          160.218.032.068                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z1",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.016.219.096                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
+          value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.016.219.096                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z2",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.239.182.193                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
+          value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.239.182.193                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM z3",
           comment: "",
-          value: "05" + imsi + " " + msisdn + "                                                                                                                                      " + timestamp() + "000001          193.027.231.001                      " + format_usage(data_units) + "                  160.218.032.068                                  ",
+          value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.027.231.001                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         }
       ]

@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        
+
         <!--scripts-->
         <script src="scripts/js/jQuery-v3-3-1.js"></script>
         <script src="scripts/js/notify.js"></script>
@@ -39,7 +39,7 @@
 
         <!--STYLES-->
         <link rel="stylesheet" href="styles/jQuery-ui-theme.css">
-        
+
         <link rel="stylesheet" href="styles/main.css?version=<?php echo date ("YmdHis.", filemtime('styles/main.css')); ?>">
         <link rel="stylesheet" href="styles/form.css?version=<?php echo date ("YmdHis.", filemtime('styles/form.css')); ?>">
         <link rel="stylesheet" href="styles/side_menu.css?version=<?php echo date ("YmdHis.", filemtime('styles/side_menu.css')); ?>">
@@ -62,6 +62,8 @@
                     <input class="sm_i_d_c" placeholder="Jednotky MMS" value="1" min="1" max="100" maxlength="3" step="1" type="number"id="mms_units" oninput="check_input('mms'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
                     <span class="form_input_name sm_i_d_c">Jednotky DATA</span>
                     <input class="sm_i_d_c" placeholder="Jednotky DATA" value="1024" min="0" max="19999999998" maxlength="11" step="1024" type="number" id="data_units" oninput="check_input('data'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
+                    <span class="form_input_name sm_i_d_c">APN</span>
+                    <input class="sm_i_d_c" placeholder="Název APN (max 64 znaků)" maxlength="64" id="apn" type="text" oninput="check_input('apn'); show_cdr();">
                 </fieldset>
                 <fieldset class="sm_i_d_c">
                     <legend class="sm_i_d_c">Typ operátora</legend>
@@ -265,7 +267,7 @@
                         <div class="info_value" id="info_checked_cdrCount">0 z 0</div>
                     </div>
                 </div>
-        
+
                 <div class="top_menu_item download_button">
                     <input class="xd"  id="download_button" type="button" value="DOWNLOAD" onclick="download_cdr();" disabled>
                 </div>

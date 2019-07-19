@@ -35,6 +35,7 @@ function check_input(which) {
     var voice_units = $( '#voice_units' ).val();
     var sms_units = $( '#sms_units' ).val();
     var mms_units = $( '#mms_units' ).val();
+    var apn = $( '#apn' ).val();
 
     switch(which) {
         case "msisdn":
@@ -203,6 +204,23 @@ function check_input(which) {
                 $( '#mms_units' ).css('border', '1px solid rgba(43, 163, 6, 1)');
             }
             break
+        case "apn":
+            if(apn.length > 64) {
+                $( '#apn' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
+                $( '#apn' ).css('border', '1px solid rgba(255, 0, 0, 1)');
+                $( '#apn' ).notify("Maximum 64 znaků", {
+                        className: "error",
+                        position: "right",
+                        clickToHide: true,
+                        autoHideDelay: 3000,
+                        elementPosition: "right"
+                });
+            }
+            else {
+                $( '#apn' ).css('box-shadow', '0px 0px 5px rgba(43, 163, 6, 1)');
+                $( '#apn' ).css('border', '1px solid rgba(43, 163, 6, 1)');
+            }
+            break;
     }
 }
 //---------------------TIMESTAMP---------------------//
@@ -254,6 +272,28 @@ function format_usage(volume) {
         }
         return (add_zeros_to_10_cifers(download) + add_zeros_to_10_cifers(upload));
     }
+}
+//------------------APN - spaces to 64chars total-----------------//
+function add_spaces_to_64_chars(text) {
+    n = number.toString().length;
+    if(n < 11) {
+        var zeros = "";
+        for(i = 0; i < (10 - n); i++) {
+            zeros += "0";
+        }
+        return (zeros + number.toString());
+    }
+}
+
+function format_apn(text) {
+    number_of_spaces_needed = 64 - text.length;
+    spaces = "";
+
+    for(i = 0; i < number_of_spaces_needed; i++) {
+        spaces += " ";
+    }
+
+    return (text + spaces);
 }
 //------------INFO----------//
 function show_info_msisdn() {
