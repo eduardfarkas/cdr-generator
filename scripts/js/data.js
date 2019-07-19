@@ -11,10 +11,20 @@ function get_data(checked_operator, checked_usageType) {
   var formated_voice_units = format_voice_units($('#voice_units').val());
   var formated_apn_name = format_apn($('#apn').val());
 
+  /*--------------------------------*/
+  /*-------KOMENTÁŘ K ŘAZENÍ--------*/
+  /*--------------------------------*/
+  //pro správné fungování, musí všechny CDR být seřazeny podle chargingCode (tady pod "name")
+  //dále je ale dělíme na GROUPy
+  //tedy vždy připisujeme nové CDR ke správné GROUP a vždy SEŘAZENĚ
+
   var data =
   {
     prepaid: {
       voice: [  //groups: vmo_fdr10
+        //**************************************
+        //group vmo_fdr10
+        //**************************************
         {
           name: "11001",
           comment: "voice do O2",
@@ -462,18 +472,6 @@ function get_data(checked_operator, checked_usageType) {
           group: "vmo_fdr10"
         },
         {
-          name: "20601",
-          comment: "VOA roam voice MT EU -> ČR",
-          value: "1015|421602020001|" + msisdn + "|421123123123|0|" + voice_units + "|424101361244BE||" + timestamp() + "|",
-          group: "vmt_fdr10"
-        },
-        {
-          name: "20601",
-          comment: "VOB roam voice MT EU -> ČR",
-          value: "1025|421602020001|" + msisdn + "|421123123123|0|" + voice_units + "|424101361244BE||" + timestamp() + "|",
-          group: "vmt_fdr10"
-        },
-        {
           name: "20602",
           comment: "roam voice MO EU -> EU",
           value: "1020|" + msisdn + "||460123123123||46602020000||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
@@ -562,9 +560,27 @@ function get_data(checked_operator, checked_usageType) {
           comment: "Voice/sms/mms from other unknown",
           value: "1020|" + msisdn + "||46602020000||214602020000||0|" + voice_units + "|401D413804210A||" + timestamp() + "|",
           group: "vmo_fdr10"
+        },
+        //**************************************
+        //group vmt_fdr10
+        //**************************************
+        {
+          name: "20601",
+          comment: "VOA roam voice MT EU -> ČR",
+          value: "1015|421602020001|" + msisdn + "|421123123123|0|" + voice_units + "|424101361244BE||" + timestamp() + "|",
+          group: "vmt_fdr10"
+        },
+        {
+          name: "20601",
+          comment: "VOB roam voice MT EU -> ČR",
+          value: "1025|421602020001|" + msisdn + "|421123123123|0|" + voice_units + "|424101361244BE||" + timestamp() + "|",
+          group: "vmt_fdr10"
         }
       ],
       sms: [ //groups: smo_umts06, smo_umts08, smo_gsm41
+        //**************************************
+        //group smo_gsm41
+        //**************************************
         {
           name: "10003",
           comment: "Premium SMS ordering SMS",
@@ -710,88 +726,10 @@ function get_data(checked_operator, checked_usageType) {
           group: "smo_gsm41"
         },
         {
-          name: "15001",
-          comment: "Premium Lines 900%",
-          value: msisdn + "|36||10300||0|90010|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15002",
-          comment: "Premium Lines 901%",
-          value: msisdn + "|36||11300||0|90111|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15003",
-          comment: "Premium Lines 902%",
-          value: msisdn + "|36||12300||0|90212|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15004",
-          comment: "Premium Lines 903%",
-          value: msisdn + "|36||13300||0|90313|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15005",
-          comment: "Premium Lines 904%",
-          value: msisdn + "|36||14300||0|90414|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15006",
-          comment: "Premium Lines 905%",
-          value: msisdn + "|36||15300||0|90515|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15007",
-          comment: "Premium Lines 906%",
-          value: msisdn + "|36||16300||0|90616|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15008",
-          comment: "Premium Lines 907%",
-          value: msisdn + "|36||17300||0|90717|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15009",
-          comment: "Premium Lines 908%",
-          value: msisdn + "|36||18300||0|90818|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15010",
-          comment: "Premium Lines 909%",
-          value: msisdn + "|36||19300||0|90919|||" + timestamp() + "|",
-          group: "vas_npp01"
-        },
-        {
-          name: "15050",
-          comment: "dms 87777 příjem obsahu",
-          value: msisdn + "|35|SS30|||0|000000000000000000|||" + timestamp() + "|",
-          group: "vas_cdp03"
-        },
-        {
           name: "15051",
           comment: "dms 87777 order",
           value: msisdn + "|42087777|420602023000|4542F00729||" + timestamp() + "|",
           group: "smo_gsm41"
-        },
-        {
-          name: "15052",
-          comment: "dms 87777 příjem obsahu",
-          value: msisdn + "|35|SS60|||0|000000000000000000|||" + timestamp() + "|",
-          group: "vas_cdp03"
-        },
-        {
-          name: "15053",
-          comment: "dms 87777 příjem obsahu",
-          value: msisdn + "|35|SS90|||0|000000000000000000|||" + timestamp() + "|",
-          group: "vas_cdp03"
         },
         {
           name: "17001",
@@ -1200,9 +1138,96 @@ function get_data(checked_operator, checked_usageType) {
           comment: "Voice/sms/mms from other unknown",
           value: msisdn + "|46602020000|214602020000|401D413804210A||" + timestamp() + "|",
           group: "smo_gsm41"
+        },
+        //**************************************
+        //group vas_npp01
+        //**************************************
+        {
+          name: "15001",
+          comment: "Premium Lines 900%",
+          value: msisdn + "|36||10300||0|90010|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15002",
+          comment: "Premium Lines 901%",
+          value: msisdn + "|36||11300||0|90111|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15003",
+          comment: "Premium Lines 902%",
+          value: msisdn + "|36||12300||0|90212|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15004",
+          comment: "Premium Lines 903%",
+          value: msisdn + "|36||13300||0|90313|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15005",
+          comment: "Premium Lines 904%",
+          value: msisdn + "|36||14300||0|90414|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15006",
+          comment: "Premium Lines 905%",
+          value: msisdn + "|36||15300||0|90515|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15007",
+          comment: "Premium Lines 906%",
+          value: msisdn + "|36||16300||0|90616|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15008",
+          comment: "Premium Lines 907%",
+          value: msisdn + "|36||17300||0|90717|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15009",
+          comment: "Premium Lines 908%",
+          value: msisdn + "|36||18300||0|90818|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        {
+          name: "15010",
+          comment: "Premium Lines 909%",
+          value: msisdn + "|36||19300||0|90919|||" + timestamp() + "|",
+          group: "vas_npp01"
+        },
+        //**************************************
+        //group vas_cdp03
+        //**************************************
+        {
+          name: "15050",
+          comment: "dms 87777 příjem obsahu",
+          value: msisdn + "|35|SS30|||0|000000000000000000|||" + timestamp() + "|",
+          group: "vas_cdp03"
+        },
+        {
+          name: "15052",
+          comment: "dms 87777 příjem obsahu",
+          value: msisdn + "|35|SS60|||0|000000000000000000|||" + timestamp() + "|",
+          group: "vas_cdp03"
+        },
+        {
+          name: "15053",
+          comment: "dms 87777 příjem obsahu",
+          value: msisdn + "|35|SS90|||0|000000000000000000|||" + timestamp() + "|",
+          group: "vas_cdp03"
         }
       ],
-      mms: [ //groups: mmo_mms06, mmo_mms08
+      mms: [ //groups: mmo_mms01
+        //**************************************
+        //group mmo_mms01
+        //**************************************
         {
           name: "10002",
           comment: "MMS na email",
@@ -1769,6 +1794,9 @@ function get_data(checked_operator, checked_usageType) {
         }
       ],
       data: [ //groups: dti_grds03, dtu_grds03
+        //**************************************
+        //group dti_grds03
+        //**************************************
         {
           name: "10004",
           comment: "PayGo 333",
@@ -1789,6 +1817,9 @@ function get_data(checked_operator, checked_usageType) {
           value: msisdn + "|20616|498591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dti_grds03"
         },
+        //**************************************
+        //group dti_grds03
+        //**************************************
         {
           name: "20617",
           comment: "Data consumption in nonEU - 444",
@@ -1811,6 +1842,9 @@ function get_data(checked_operator, checked_usageType) {
     },
     postpaid: {
       voice: [ //groups: gvoice, xml
+        //**************************************
+        //group gvoice
+        //**************************************
         {
           name: "11001",
           comment: "voice do O2",
@@ -2827,6 +2861,39 @@ function get_data(checked_operator, checked_usageType) {
           value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               883602123123            5  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  2302  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
           group: "gvoice"
         },
+        {
+          name: "24001",
+          comment: "VPN on-net",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1601  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24002",
+          comment: "VPN TEF mobile + other VOX",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1605  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24003",
+          comment: "VPN other mobile operators",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1606  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24004",
+          comment: "VPN fix",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        {
+          name: "24005",
+          comment: "VPN others (e.g. Int. number)",
+          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               421602123123            5  0  19 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
+          group: "gvoice"
+        },
+        //**************************************
+        //group xml
+        //**************************************
         {
           name: "10008",
           comment: "roam voice MO EU -> ČR",
@@ -4806,39 +4873,12 @@ function get_data(checked_operator, checked_usageType) {
   </transferBatch>\n\
 </DataInterChange>",
           group: "xml"
-        },
-        {
-          name: "24001",
-          comment: "VPN on-net",
-          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1601  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
-          group: "gvoice"
-        },
-        {
-          name: "24002",
-          comment: "VPN TEF mobile + other VOX",
-          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1605  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
-          group: "gvoice"
-        },
-        {
-          name: "24003",
-          comment: "VPN other mobile operators",
-          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1606  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
-          group: "gvoice"
-        },
-        {
-          name: "24004",
-          comment: "VPN fix",
-          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               602123123               6  0  17 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
-          group: "gvoice"
-        },
-        {
-          name: "24005",
-          comment: "VPN others (e.g. Int. number)",
-          value: "3  898857230  420602041000        1 0  " + imsi + "                 " + msisdn + "        5  " + msisdn + "               421602123123            5  0  19 135168    0         " + timestamp() + formated_voice_units + "premi900  1620  226020400100FFFFFFFFFFFFFFFFFFFF1D05A8CB0143 774691192           6  ",
-          group: "gvoice"
         }
       ],
       sms: [ //groups: sms, npp, dms
+        //**************************************
+        //group sms
+        //**************************************
         {
           name: "10003",
           comment: "",
@@ -5006,88 +5046,6 @@ function get_data(checked_operator, checked_usageType) {
           comment: "",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  420116123                     5  5  420602020000        2300  0  1542550  " + timestamp(),
           group: "sms"
-        },
-        {
-          name: "15001",
-          comment: "",
-          value: "79                " + msisdn + "      9001503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15002",
-          comment: "",
-          value: "79                " + msisdn + "      9011503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15003",
-          comment: "",
-          value: "79                " + msisdn + "      9021503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15004",
-          comment: "",
-          value: "79                " + msisdn + "      9031503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15005",
-          comment: "",
-          value: "79                " + msisdn + "      9041503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        /*
-        {
-            name: "15006",
-            comment: "asi nejde / nemělo by procházet ???",
-            value: "79                " + msisdn + "      9051503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-            group: "npp"
-        },
-        */
-        {
-          name: "15007",
-          comment: "",
-          value: "79                " + msisdn + "      9061503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15008",
-          comment: "",
-          value: "79                " + msisdn + "      9071503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        /*
-        {
-            name: "15009",
-            comment: "asi nejde / nemělo by procházet ???",
-            value: "79                " + msisdn + "      9081503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-            group: "npp"
-        },
-        */
-        {
-          name: "15010",
-          comment: "",
-          value: "79                " + msisdn + "      9091503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
-          group: "npp"
-        },
-        {
-          name: "15050",
-          comment: "DMS",
-          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS30  0101                             00000000000000000000000000000000000000MMSH                                  0000",
-          group: "dms"
-        },
-        {
-          name: "15052",
-          comment: "DMS",
-          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS60  0101                             00000000000000000000000000000000000000MMSH                                  0000",
-          group: "dms"
-        },
-        {
-          name: "15053",
-          comment: "DMS",
-          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS90  0101                             00000000000000000000000000000000000000MMSH                                  0000",
-          group: "dms"
         },
         {
           name: "15190",
@@ -6016,6 +5974,94 @@ function get_data(checked_operator, checked_usageType) {
           comment: "roam WORLD -> WORLD",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp() + "0         0  34 3  1  100123123123                  5  5  120602020000        2302  0  1542550  " + timestamp(),
           group: "sms"
+        },
+        //**************************************
+        //group npp
+        //**************************************
+        {
+          name: "15001",
+          comment: "",
+          value: "79                " + msisdn + "      9001503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        {
+          name: "15002",
+          comment: "",
+          value: "79                " + msisdn + "      9011503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        {
+          name: "15003",
+          comment: "",
+          value: "79                " + msisdn + "      9021503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        {
+          name: "15004",
+          comment: "",
+          value: "79                " + msisdn + "      9031503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        {
+          name: "15005",
+          comment: "",
+          value: "79                " + msisdn + "      9041503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        /*
+        {
+            name: "15006",
+            comment: "asi nejde / nemělo by procházet ???",
+            value: "79                " + msisdn + "      9051503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+            group: "npp"
+        },
+        */
+        {
+          name: "15007",
+          comment: "",
+          value: "79                " + msisdn + "      9061503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        {
+          name: "15008",
+          comment: "",
+          value: "79                " + msisdn + "      9071503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        /*
+        {
+            name: "15009",
+            comment: "asi nejde / nemělo by procházet ???",
+            value: "79                " + msisdn + "      9081503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+            group: "npp"
+        },
+        */
+        {
+          name: "15010",
+          comment: "",
+          value: "79                " + msisdn + "      9091503                                                         9011503                                                         " + timestamp() + "000001      0899                             00000000000000000000000030000000000000                                      0000prepaid",
+          group: "npp"
+        },
+        //**************************************
+        //group dms
+        //**************************************
+        {
+          name: "15050",
+          comment: "DMS",
+          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS30  0101                             00000000000000000000000000000000000000MMSH                                  0000",
+          group: "dms"
+        },
+        {
+          name: "15052",
+          comment: "DMS",
+          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS60  0101                             00000000000000000000000000000000000000MMSH                                  0000",
+          group: "dms"
+        },
+        {
+          name: "15053",
+          comment: "DMS",
+          value: "75                " + msisdn + "      87777                                                           000000000000000000                                              " + timestamp() + "000001SS90  0101                             00000000000000000000000000000000000000MMSH                                  0000",
+          group: "dms"
         }
       ],
       mms: [ //groups: mms
@@ -7129,6 +7175,9 @@ function get_data(checked_operator, checked_usageType) {
     },
     m2m: {
       voice: [ //groups: gvoice
+        //**************************************
+        //group gvoice
+        //**************************************
         {
           name: "10001",
           comment: "Volání do sítě VOA",
@@ -7351,6 +7400,9 @@ function get_data(checked_operator, checked_usageType) {
           value: "3                                 1 0  " + imsi + "                 " + msisdn + "        5  100123123123            5  100123123123            5     17                     " + timestamp() + formated_voice_units + "          2302  " + timestamp() + "BABA" + msisdn + "               " + msisdn + "        5  ",
           group: "gvoice"
         },
+        //**************************************
+        //group xml
+        //**************************************
         {
           name: "20011",
           comment: "roam voice MO EU -> EU + ČR",

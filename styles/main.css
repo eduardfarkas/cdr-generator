@@ -130,15 +130,15 @@ body {
     height: 21px;
 }
 /*---------------------------------------*/
-td.cdr-chargingClass { 
-    min-width: 22px;    
-    
+td.cdr-chargingClass {
+    min-width: 22px;
+
 
     text-align: center;
 }
 /*charging class start*/
 .cdr-chargingClass-start {
-   
+
     margin: 0px;
     padding: 0px;
     vertical-align: center;
@@ -155,7 +155,7 @@ td.cdr-chargingClass {
 .cdr-chargingClass-start div img {
     position: absolute;
     left: 0px;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
 }
 .cdr-chargingClass-start div input {
@@ -200,8 +200,8 @@ td.cdr-chargingClass {
     object-fit: cover;
 }
 td.cdr-chargingCode {
-    
-    min-width: 22px; 
+
+    min-width: 22px;
     text-align: center;
 }
 /*charging code start*/
@@ -222,7 +222,7 @@ td.cdr-chargingCode {
 .cdr-chargingCode-start div img {
     position: absolute;
     left: 0px;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
 }
 .cdr-chargingCode-start div input {

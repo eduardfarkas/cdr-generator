@@ -19,23 +19,27 @@ function show_cdr_menu_content() {
                     "</tr>" +
                 "</thead>" +
                 "<tbody>";
-        
-        //[id, chargingClass, group, chargingCode]                        
+
+        //[id, chargingClass, group, chargingCode]
         var lastCdr =       [-1, 0, -1, 0]; //last used cdr
         var currentCdr =    [-1, 0, -1, 0];
         var nextCdr =       [-1, 0, -1, 0, false]; // true = is last, false = not last
 
-        
-        for(j = 0; j < cdrs.length; j++) { //for each cdr         
+        for(j = 0; j < cdrs.length; j++) { //for each cdr
             if(cdrs[j].group == groups[i]) { //set box for each cdrs group
-                
-                currentCdr = [cdrs[j].id, cdrs[j].name.substring(0, 2), groups[i], cdrs[j].name];
+
+                currentCdr = [
+                    cdrs[j].id,
+                    cdrs[j].name.substring(0, 2),
+                    groups[i],
+                    cdrs[j].name
+                ];
                 nextCdr = [
                     (j+1 == cdrs.length) ? (cdrs[j].id) : (cdrs[j+1].id), //id
                     (j+1 == cdrs.length) ? (cdrs[j].name.substring(0, 2)) : (cdrs[j+1].name.substring(0, 2)), //charging class
                     (j+1 == cdrs.length) ? (cdrs[j].group) : (cdrs[j+1].group),
                     (j+1 == cdrs.length) ? (cdrs[j].name) : (cdrs[j+1].name),
-                    (j+1 == cdrs.length) ? ( true ) : (false)                                  
+                    (j+1 == cdrs.length) ? ( true ) : (false)
                 ];
 
                 //-------------------------------------
@@ -43,20 +47,29 @@ function show_cdr_menu_content() {
                 //-------------------------------------
                 var chargingClass = "";
 
-                if((currentCdr[0] > lastCdr[0] && currentCdr[1] != lastCdr[1]) || currentCdr[2] != lastCdr[2]) {
-                    if(nextCdr[1] != currentCdr[1] || nextCdr[4] == true) {
-                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></td>";
-                    }
-                    else {
+                if(
+                    (currentCdr[0] > lastCdr[0] && currentCdr[1] != lastCdr[1]) ||
+                    currentCdr[2] != lastCdr[2]
+                ) {
+                    if(
+                        (nextCdr[1] == currentCdr[1] && nextCdr[2] == currentCdr[2])
+                    ) { //show start image
                         chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingClass(this);'></div></td>";
                     }
+                    else { //do not show start image
+                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this);'></td>";
+                    }
                 }
-                else if((nextCdr[0] > currentCdr[0] && nextCdr[1] != currentCdr[1]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
+                else if(
+                    (nextCdr[0] > currentCdr[0] && nextCdr[1] != currentCdr[1]) ||
+                    nextCdr[4] == true ||
+                    currentCdr[2] != nextCdr[2]
+                ) {
                     chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-end'><div><img src='images/charging-class-end.png'></img></div></td>";
-                } 
+                }
                 else {
                     chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-join'><div><img src='images/charging-class-join.png'></img></div></td>";
-                }                                                          
+                }
                 //-------------------------------------
 
                 //-------------------------------------
@@ -64,26 +77,37 @@ function show_cdr_menu_content() {
                 //-------------------------------------
                 var chargingCode = "";
 
-                //[id, chargingClass, group, chargingCode]                                 
-                if(currentCdr[0] > lastCdr[0] && currentCdr[3] != lastCdr[3]) {
-                    if(nextCdr[3] != currentCdr[3] || nextCdr[4] == true) {
+                //[id, chargingClass, group, chargingCode]
+                if(
+                    currentCdr[0] > lastCdr[0] && currentCdr[3] != lastCdr[3]
+                ) {
+                    if(
+                        nextCdr[3] != currentCdr[3] ||
+                        nextCdr[4] == true
+                    ) {
                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'></td>";
                     }
                     else {
                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-start'><div><img src='images/charging-code-start.png'></img><input type='checkbox' name='cdr_chargingCode' class='cdr-chargingCode " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingCode(this);'></div></td>";
                     }
                 }
-                else if((nextCdr[0] > currentCdr[0] && nextCdr[3] != currentCdr[3]) || nextCdr[4] == true || currentCdr[2] != nextCdr[2]) {
-                    if(lastCdr[3] != currentCdr[3]) {
+                else if(
+                    (nextCdr[0] > currentCdr[0] && nextCdr[3] != currentCdr[3]) ||
+                    nextCdr[4] == true ||
+                    currentCdr[2] != nextCdr[2]
+                ) {
+                    if(
+                        lastCdr[3] != currentCdr[3]
+                    ) {
                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-end'></td>";
                     }
                     else {
                         chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-end'><div><img src='images/charging-code-end.png'></img></div></td>";
-                    }                                 
-                } 
+                    }
+                }
                 else {
                     chargingCode = "<td class='cdr-chargingCode cdr-chargingCode-join'><div><img src='images/charging-code-join.png'></img></div></td>";
-                }   
+                }
 
                 //-------------------------------------
                 lastCdr = [cdrs[j].id, cdrs[j].name.substring(0, 2), groups[i], cdrs[j].name];
@@ -91,13 +115,13 @@ function show_cdr_menu_content() {
                 box_content +=
                 "<tr class='cdr_tr'>" +
                     chargingClass +
-                    chargingCode +                            
+                    chargingCode +
                     "<td class='cdr_name' onclick='check_cdr(this);'>" + cdrs[j].name + "</td>" +
                     "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount();'></td>" +
                     "<td class='cdr_comment'>" + cdrs[j].comment + "</td>"
                 "</tr>";
             }
-        }                  
+        }
 
         box_content += "</tbody></table>";
 
@@ -121,7 +145,7 @@ function show_cdr() {
     var sms_units = $( '#sms_units').val();
     var mms_units = $( '#mms_units').val();
 
-    var checkedCheckboxes = $( 'input[class^=cdr]:checked');
+    var checkedCheckboxes = $( 'input[class~=cdr]:checked');
     var content = "";
 
     for(i = 0; i < checkedCheckboxes.length; i++) {
@@ -156,7 +180,7 @@ function show_cdr() {
 }
 
 function enable_download() {
-    var checkedCheckboxes = $( 'input[class^=cdr]:checked');
+    var checkedCheckboxes = $( 'input[class~=cdr]:checked');
     if(checkedCheckboxes.length > 0) {
         $( '#download_button' ).prop('disabled', false);
     } else {
@@ -195,23 +219,23 @@ function download_cdr() {
             }
         };
 
-        var group = $( 'input[class^=cdr]:checked' )[0].classList[1];
+        var group = $( 'input[class~=cdr]:checked' )[0].classList[1];
 
         if(group == "xml") {
             var data = get_data("all", "all");
 
 
-            if($( 'input[class^=cdr]:checked' ).length > 1) {
+            if($( 'input[class~=cdr]:checked' ).length > 1) {
                 //ZIP files
                 var zip = new JSZip();
 
                 var name_array = [];
 
-                for(i = 0; i < $( 'input[class^=cdr]:checked' ).length; i++) {
+                for(i = 0; i < $( 'input[class~=cdr]:checked' ).length; i++) {
                     $.each( data, function( data_operator, data_operators ) {
                         $.each( data_operators, function( data_usageType, cdr ) {
                             for(j = 0; j < cdr.length; j++) { //for each cdr
-                                if(cdr[j].id == $( 'input[class^=cdr]:checked' )[i].id) { //set box for each group
+                                if(cdr[j].id == $( 'input[class~=cdr]:checked' )[i].id) { //set box for each group
                                     name_array[i] = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
                                 }
                             }
@@ -227,7 +251,7 @@ function download_cdr() {
 
                 zip.generateAsync({type:"blob"}).then(function(content) {
                     saveAs(content, "xml.zip");
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                 });
 
             } else {
@@ -236,7 +260,7 @@ function download_cdr() {
                 $.each( data, function( data_operator, data_operators ) {
                     $.each( data_operators, function( data_usageType, cdr ) {
                         for(j = 0; j < cdr.length; j++) { //for each cdr
-                            if(cdr[j].id == $( 'input[class^=cdr]:checked' )[0].id) { //set box for each group
+                            if(cdr[j].id == $( 'input[class~=cdr]:checked' )[0].id) { //set box for each group
                                 filename = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
                             }
                         }
@@ -248,7 +272,7 @@ function download_cdr() {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
-                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
             }
         } else {
             var operator = $('input[name=operator]:checked', '.input_form').val();
@@ -261,15 +285,15 @@ function download_cdr() {
                 });
                 saveAs(blob, filename);
                 if($('input[name=usage]:checked', '.input_form').val() == "sms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("sms usage download info");
                 }
                 if($('input[name=usage]:checked', '.input_form').val() == "mms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("mms usage download info");
-                } 
+                }
                 if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("voice/data usage download info");
                 }
             } else {
@@ -281,15 +305,15 @@ function download_cdr() {
                 });
                 saveAs(blob, filename);
                 if($('input[name=usage]:checked', '.input_form').val() == "sms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("sms usage download info");
                 }
                 if($('input[name=usage]:checked', '.input_form').val() == "mms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("mms usage download info");
-                } 
+                }
                 if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class^=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
                     console.log("voice/data usage download info");
                 }
             }
@@ -343,7 +367,7 @@ function check_all_by_group(checkbox) {
 function check_all_by_chargingClass(checkbox) {
     var clicked_group = checkbox.classList[1];
     var clicked_chargingClass = checkbox.classList[2];
-    
+
     //dodelat podminku, aby se zaskrtly jen CDR v danem boxu
     if(checkbox.checked == true) {
         $( "." + clicked_chargingClass + "." + clicked_group).not(checkbox).prop('checked', true);
@@ -365,16 +389,16 @@ function check_all_by_chargingCode(checkbox) {
     } else {
         $( "." + clicked_chargingCode + "." + clicked_group ).not(checkbox).prop('checked', false);
         show_cdr();
-    }  
+    }
     enable_download();
 }
 
 //clicking on name cell
 function check_cdr(table_td) {
-   
+
     var checkbox = $( table_td ).parent().find('input.cdr:checkbox');
     //console.log(checkbox);
-    
+
 
     if(checkbox.prop('checked') == false) {
         checkbox.prop('checked', true);
@@ -382,7 +406,7 @@ function check_cdr(table_td) {
         var clicked_group = checkbox.attr('class').split(" ")[1];
 
         var checkedCheckboxes = $( 'input[name^=cdr]:checked');
-        
+
 
         for(i = 0; i < checkedCheckboxes.length; i++) {
             if(checkedCheckboxes[i].classList[1] != clicked_group) {
@@ -398,12 +422,9 @@ function check_cdr(table_td) {
         $( '.cdr_all' ).not(checkbox).prop('checked', false);
         $( '.' + clicked_chargingCode + '.cdr-chargingCode' ).not(checkbox).prop('checked', false);
         $( '.' + clicked_chargingClass + '.cdr-chargingClass' ).not(checkbox).prop('checked', false);
-        checkbox.prop('checked', false);      
+        checkbox.prop('checked', false);
     }
     show_cdr();
     show_info_cdrCount();
     enable_download();
 }
-
-
-
