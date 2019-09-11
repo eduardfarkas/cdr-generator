@@ -8818,25 +8818,25 @@ function get_data(checked_operator, checked_usageType) {
           group: "lte"
         },
         {
-          name: "ROAM z1",
+          name: "ROAM-z1",
           comment: "EU",
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.016.219.096                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
-          name: "ROAM z1",
+          name: "ROAM-z1",
           comment: "ŠVÝCARSKO",
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          094.102.164.000                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
-          name: "ROAM z2",
+          name: "ROAM-z2",
           comment: "nonEU",
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.239.182.193                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
-          name: "ROAM z3",
+          name: "ROAM-z3",
           comment: "WORLD",
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.027.231.001                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
