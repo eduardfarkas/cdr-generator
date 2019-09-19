@@ -8813,61 +8813,37 @@ function get_data(checked_operator, checked_usageType) {
       data: [ //groups: lte
         {
           name: "HOME",
-<<<<<<< HEAD
           comment: "<b>ČR</b> (Data)",
-=======
-          comment: "ČR (Data)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "07" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          160.218.032.068                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM",
-<<<<<<< HEAD
           comment: "<b>EU</b> (ROAMING_DATA_1)",
-=======
-          comment: "EU (ROAMING_DATA_1)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.016.219.096                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM",
-<<<<<<< HEAD
           comment: "<b>nonEU</b> (ROAMING_DATA_2)",
-=======
-          comment: "nonEU (ROAMING_DATA_2)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.239.182.193                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM",
-<<<<<<< HEAD
           comment: "<b>WORLD</b> (ROAMING_DATA_3)",
-=======
-          comment: "WORLD (ROAMING_DATA_3)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          170.051.252.001                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM",
-<<<<<<< HEAD
           comment: "<b>WORLD</b> (ROAMING_DATA_4)",
-=======
-          comment: "WORLD (ROAMING_DATA_4)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          193.027.231.001                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         },
         {
           name: "ROAM",
-<<<<<<< HEAD
           comment: "<b>ŠVÝCARSKO</b> (ROAMING_DATA_5)",
-=======
-          comment: "ŠVÝCARSKO (ROAMING_DATA_5)",
->>>>>>> 8ad3e1077e803dfa7f0b533c222c37d79b6f902e
           value: "05" + imsi + " " + msisdn + "      " + formated_apn_name + "                                                                " + timestamp() + "000001          094.102.164.000                      " + data_units + "                  160.218.032.068                                  ",
           group: "lte"
         }
