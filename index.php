@@ -56,10 +56,8 @@
                     <input class="sm_i_d_c" placeholder="IMSI" min="0" max="999999999999999" maxlength="15" type="number" id="imsi" oninput="check_input('imsi'); maxLengthCheck(this); show_cdr(); show_info_imsi();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
                     <span class="form_input_name sm_i_d_c">Jednotky VOICE</span>
                     <input class="sm_i_d_c" placeholder="Jednotky VOICE" value="60" min="0" max="999999" maxlength="6" step="60" type="number" id="voice_units" oninput="check_input('voice'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
-                    <span class="form_input_name sm_i_d_c">Jednotky SMS</span>
-                    <input class="sm_i_d_c" placeholder="Jednotky SMS" value="1" min="1" max="100" maxlength="3" step="1" type="number" id="sms_units" oninput="check_input('sms'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
-                    <span class="form_input_name sm_i_d_c">Jednotky MMS</span>
-                    <input class="sm_i_d_c" placeholder="Jednotky MMS" value="1" min="1" max="100" maxlength="3" step="1" type="number"id="mms_units" oninput="check_input('mms'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
+                    <span class="form_input_name sm_i_d_c">Jednotky SMS a MMS</span>
+                    <input class="sm_i_d_c" placeholder="Jednotky SMS a MMS" value="1" min="1" max="100" maxlength="3" step="1" type="number" id="sms_mms_units" oninput="check_input('sms_mms'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
                     <span class="form_input_name sm_i_d_c">Jednotky DATA</span>
                     <input class="sm_i_d_c" placeholder="Jednotky DATA" value="1024" min="0" max="19999999998" maxlength="11" step="1024" type="number" id="data_units" oninput="check_input('data'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
                     <span class="form_input_name sm_i_d_c">APN</span>
@@ -183,43 +181,12 @@
         </div>
         <div class="sliding_box_help sm_h_c">
             <div class="sm_h_c help_div">
-                <h3 class="sm_h_c">DĚLÁNO PRO CHROME!!!</h3>
-                <h4 class="sm_h_c">Stahování</h4>
+                <p class="sm_h_c">19.9.2019</p>
                 <ul class="sm_h_c">
-                    <li class="sm_h_c">Musí být zaškrtnuté alespoň jedno CDR, jinak tlačítko DOWNLOAD je vypnuté</li>
-                    <li class="sm_h_c">Pokud je zaškrtnuto více než 1 XML, stáhne se .zip s XML</li>
-                    <li class="sm_h_c">Název souboru je obvykle "timestamp_generated_.přípona". XML jsou pojmenovávány podle popisu v poznámce (to kvůli unikátnosti jmen při stažení více XML najednou). Přípony jsou generovány na základě skupiny v DB</li>
-                    <li class="sm_h_c">Pokud nesouhlasí nějaký input, dojde k varování, ale stáhnout se soubor dá</li>
-                </ul>
-                <h4 class="sm_h_c">Inputy</h4>
-                <ul class="sm_h_c">
-                    <li class="sm_h_c">Po načtení stránky se zobrazí menu s inputem, vypnout se dá kliknutím kamkoli jinam, než na menu nebo druhým kliknutím na tlačítko.</li>
-                    <li class="sm_h_c">Do všech polí lze vkládat jen čísla! (a to i kopírováním)</li>
-                    <li class="sm_h_c">Na horní liště je vidět MSISDN, IMSI a druh zobrazovaných CDR</li>
-                    <li class="sm_h_c">V DATA menu je u operátorů vidět kolik obsahují CDR a po kliknutí na nějakého se zobrazí i počet CDR k jednotlivým typům usage</li>
-                    <li class="sm_h_c">Voice je v sekundách, SMS a MMS v jednotkách a data v kB</li>
-                </ul>
-                <h4 class="sm_h_c">CDR menu</h4>
-                <ul class="sm_h_c">
-                    <li class="sm_h_c">V levém horním rohu je datum poslední aktualizace CDR databáze</li>
-                    <li class="sm_h_c">V řádku nadpisu tabulky se dají všechny CDR označit nebo zrušit</li>
-                    <li class="sm_h_c">CDR lze zaškrtnout podle ChargingClass nebo ChargingCode</li>
-                    <li class="sm_h_c">Výšku tabulek (boxů) lze potažením mezery (uprostřed stránky) přizpůsobit dle libosti</li>
-                    <li class="sm_h_c">Lze označit vždy CDR jen z jedné skupiny (jedné tabulky)</li>
-                    <li class="sm_h_c">Voice a data mají počet jednotek přímo v CDR, SMS a MMS jsou kopírovány (tzn. 2 SMS se zobrazí jako 2x CDR)</li>
-                    <li class="sm_h_c">Při přepnutí operátora nebo typu usage se automaticky přizpůsobí menu podle počtu skupin v DB. (Např. PoP SMS mají 3 skupiny - sms, npp, dms, zobrazí se tedy 3 tabulky + tabulka s CDR)</li>
-                    <li class="sm_h_c">Pokud v kombinaci operátor/typ usage ještě nejsou CDR, nezobrazí se nic</li>
-                    <li class="sm_h_c">V horní liště se ukazuje počet všech CDR v daných kategoriích a současný stav označených CDR ke skupině</li>
-                </ul>
-                <h4 class="sm_h_c">Při potížích</h4>
-                <ul>
-                    <li class="sm_h_c">Pokud chybí nějaké CDR, stačí mi poslat příklad a na co je, doplním co nejdřív</li>
-                    <li class="sm_h_c">Pokud je nějaké špatně nebo by se hodil lepší popis, řekněte co je v něm špatně a opravím co nejdřív</li>
-                </ul>
-                <h4 class="sm_h_c">Kontakt na mě</h4>
-                <ul class="sm_h_c">
-                    <li class="sm_h_c">Email: eduard.farkas@o2.cz</li>
-                    <li class="sm_h_c">Skype: eda-farkas95</li>
+                    <li class="sm_h_c">Oprava bugu s vertikálním roztahováním rádků tabulek s CDR a překrýváním menu</li>
+                    <li class="sm_h_c">Úprava generování jmen souborů. Nyní místo _generated_ dávám MSISDN</li>
+                    <li class="sm_h_c">Sjednocení jednotek SMS a MMS (nyní pouze jedno pole)</li>
+                    <li class="sm_h_c">Pozadí řádku nad kterým je kurzor je nyní zvýrazněn</li>
                 </ul>
             </div>
         </div>
@@ -289,7 +256,7 @@
                     DATA
                 </div>
                 <div class="side_menu_item help sm_h_c" onclick="show_help();">
-                    HELP
+                    LOG
                 </div>
             </div>
             <div class="wrapper">

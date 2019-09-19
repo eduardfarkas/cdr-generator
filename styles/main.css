@@ -129,6 +129,9 @@ body {
     min-height: 21px;
     height: 21px;
 }
+.box_table tr.cdr_tr:hover td {
+    background-color: #f1c675;
+}
 /*---------------------------------------*/
 td.cdr-chargingClass {
     min-width: 22px;
