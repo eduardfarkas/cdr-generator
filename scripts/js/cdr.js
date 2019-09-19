@@ -14,7 +14,7 @@ function show_cdr_menu_content() {
                         "<th></th>" +
                         "<th></th>" +
                         "<th class='th_name'>Název</th>" +
-                        "<th class='th_checkbox'><input type='checkbox' id='group-" + i + "' name='cdr' class='cdr_all " + groups[i] + "' onchange='check_all_by_group(this); show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground(this);'></th>" +
+                        "<th class='th_checkbox'><input type='checkbox' id='group-" + i + "' name='cdr' class='cdr_all " + groups[i] + "' onchange='check_all_by_group(this); show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground();'></th>" +
                         "<th class='th_comment'>Popis</th>" +
                     "</tr>" +
                 "</thead>" +
@@ -54,10 +54,10 @@ function show_cdr_menu_content() {
                     if(
                         (nextCdr[1] == currentCdr[1] && nextCdr[2] == currentCdr[2])
                     ) { //show start image
-                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingClass(this); setBackground(this);'></div></td>";
+                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingClass(this); setBackground();'></div></td>";
                     }
                     else { //do not show start image
-                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this); setBackground(this);'></td>";
+                        chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); check_all_by_chargingClass(this); setBackground();'></td>";
                     }
                 }
                 else if(
@@ -117,7 +117,7 @@ function show_cdr_menu_content() {
                     chargingClass +
                     chargingCode +
                     "<td class='cdr_name' onclick='check_cdr(this);'>" + cdrs[j].name + "</td>" +
-                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground(this);'></td>" +
+                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground();'></td>" +
                     "<td class='cdr_comment'>" + cdrs[j].comment + "</td>"
                 "</tr>";
             }
@@ -411,5 +411,5 @@ function check_cdr(table_td) {
     show_cdr();
     show_info_cdrCount();
     enable_download();
-    setBackground(checkbox);
+    setBackground();
 }

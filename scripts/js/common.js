@@ -192,7 +192,7 @@ function check_input(which) {
     }
 }
 //---------------------GREEN BACKGROUND OF MARKED CDRs---------------------//
-function setBackground(elem) {
+function setBackground() {
     var checkboxes = $( 'input[class~=cdr]');
     for(i = 0; i < checkboxes.length; i++) {
         if($( checkboxes[i] ).prop("checked") == true) {
