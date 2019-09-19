@@ -130,7 +130,10 @@ body {
     height: 21px;
 }
 .box_table tr.cdr_tr:hover td {
-    background-color: #f1c675;
+    background-color: #f1c675 !important;
+}
+.checked_row .cdr_comment, .checked_row td {
+    background-color: #7fcf74;
 }
 /*---------------------------------------*/
 td.cdr-chargingClass {

@@ -187,6 +187,7 @@
                     <li class="sm_h_c">Úprava generování jmen souborů. Nyní místo _generated_ dávám MSISDN</li>
                     <li class="sm_h_c">Sjednocení jednotek SMS a MMS (nyní pouze jedno pole)</li>
                     <li class="sm_h_c">Pozadí řádku nad kterým je kurzor je nyní zvýrazněn</li>
+                    <li class="sm_h_c">Pozadí řádku který je označen, je nyní zelené pro snadnější čitelnost</li>
                 </ul>
             </div>
         </div>

@@ -191,6 +191,18 @@ function check_input(which) {
             break;
     }
 }
+//---------------------GREEN BACKGROUND OF MARKED CDRs---------------------//
+function setBackground(elem) {
+    var checkboxes = $( 'input[class~=cdr]');
+    for(i = 0; i < checkboxes.length; i++) {
+        if($( checkboxes[i] ).prop("checked") == true) {
+            $( checkboxes[i] ).parent().parent().addClass('checked_row');  
+        }
+        if($( checkboxes[i] ).prop("checked") == false) {
+            $( checkboxes[i] ).parent().parent().removeClass('checked_row');  
+        }
+    }
+}
 //---------------------TIMESTAMP---------------------//
 function add_zero_if_less_than_10(number) {
     return (number < 10) ? ("0" + number.toString()) : number.toString();
