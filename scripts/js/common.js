@@ -33,8 +33,7 @@ function check_input(which) {
     var imsi = $( '#imsi' ).val();
     var data_units = $( '#data_units' ).val();
     var voice_units = $( '#voice_units' ).val();
-    var sms_units = $( '#sms_units' ).val();
-    var mms_units = $( '#mms_units' ).val();
+    var sms_mms_units = $( '#sms_mms_units' ).val();
     var apn = $( '#apn' ).val();
 
     switch(which) {
@@ -142,66 +141,35 @@ function check_input(which) {
                 $( '#voice_units' ).css('border', '1px solid rgba(43, 163, 6, 1)');
             }
             break
-        case "sms":
-            if(sms_units < 1) {
-                $( '#sms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
-                $( '#sms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
-                $( '#sms_units' ).notify("Usage musí být alespoň 1", {
+        case "sms_mms":
+            if(sms_mms_units < 1) {
+                $( '#sms_mms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
+                $( '#sms_mms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
+                $( '#sms_mms_units' ).notify("Usage musí být alespoň 1", {
                         className: "error",
                         position: "right",
                         clickToHide: true,
                         autoHideDelay: 3000,
                         elementPosition: "right"
                 });
-            } else if(sms_units > 100 || sms_units.toString().length > 3) {
-                $( '#sms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
-                $( '#sms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
-                $( '#sms_units' ).notify("Usage je moc velká (max. 100)", {
+            } else if(sms_mms_units > 100 || sms_mms_units.toString().length > 3) {
+                $( '#sms_mms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
+                $( '#sms_mms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
+                $( '#sms_mms_units' ).notify("Usage je moc velká (max. 100)", {
                         className: "error",
                         clickToHide: true,
                         autoHideDelay: 3000,
                         position: "right",
                         elementPosition: "right"
                 });
-                $( '#sms_units' ).val("100");
-                $( '#sms_units' ).text("100");
+                $( '#sms_mms_units' ).val("100");
+                $( '#sms_mms_units' ).text("100");
                 setTimeout( function() {
                     check_input('sms');
                 }, 3000);
             } else {
-                $( '#sms_units' ).css('box-shadow', '0px 0px 5px rgba(43, 163, 6, 1)');
-                $( '#sms_units' ).css('border', '1px solid rgba(43, 163, 6, 1)');
-            }
-            break
-        case "mms":
-            if(mms_units < 1) {
-                $( '#mms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
-                $( '#mms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
-                $( '#mms_units' ).notify("Usage musí být alespoň 1", {
-                        className: "error",
-                        position: "right",
-                        clickToHide: true,
-                        autoHideDelay: 3000,
-                        elementPosition: "right"
-                });
-            } else if(mms_units > 100 || mms_units.toString().length > 3) {
-                $( '#mms_units' ).css('box-shadow', '0px 0px 5px rgba(255, 0, 0, 1)');
-                $( '#mms_units' ).css('border', '1px solid rgba(255, 0, 0, 1)');
-                $( '#mms_units' ).notify("Usage je moc velká (max. 100)", {
-                        className: "error",
-                        position: "right",
-                        clickToHide: true,
-                        autoHideDelay: 3000,
-                        elementPosition: "right"
-                });
-                $( '#mms_units' ).val("100");
-                $( '#mms_units' ).text("100");
-                setTimeout( function() {
-                    check_input('mms');
-                }, 3000);
-            } else {
-                $( '#mms_units' ).css('box-shadow', '0px 0px 5px rgba(43, 163, 6, 1)');
-                $( '#mms_units' ).css('border', '1px solid rgba(43, 163, 6, 1)');
+                $( '#sms_mms_units' ).css('box-shadow', '0px 0px 5px rgba(43, 163, 6, 1)');
+                $( '#sms_mms_units' ).css('border', '1px solid rgba(43, 163, 6, 1)');
             }
             break
         case "apn":
