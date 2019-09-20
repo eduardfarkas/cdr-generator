@@ -96,6 +96,42 @@ $( document ).ready( function() {
             $( '#stat_download_count_cdrs' ).html(response);
         }
     });
+    //prepaid
+    $.ajax({
+        type: 'post',
+        url: 'scripts/php/stats.php',
+        data: {
+            action: "read_count_downloaded_cdr_prepaid"
+        },
+        success: function (response) {
+            // We get the element having id of display_info and put the response inside it
+            $( '#stat_download_count_cdrs_prepaid' ).html(response);
+        }
+    });
+    //postpaid
+    $.ajax({
+        type: 'post',
+        url: 'scripts/php/stats.php',
+        data: {
+            action: "read_count_downloaded_cdr_postpaid"
+        },
+        success: function (response) {
+            // We get the element having id of display_info and put the response inside it
+            $( '#stat_download_count_cdrs_postpaid' ).html(response);
+        }
+    });
+    //m2m
+    $.ajax({
+        type: 'post',
+        url: 'scripts/php/stats.php',
+        data: {
+            action: "read_count_downloaded_cdr_m2m"
+        },
+        success: function (response) {
+            // We get the element having id of display_info and put the response inside it
+            $( '#stat_download_count_cdrs_m2m' ).html(response);
+        }
+    });
     //------------------------------------------------------------------------//
     //------------------------------------------------------------------------//
 });
@@ -136,6 +172,42 @@ function add_download_info(howMany, operator, usage, group) {
                     success: function (response) {
                         // We get the element having id of display_info and put the response inside it
                         $( '#stat_download_count_cdrs' ).html(response);
+                    }
+                });
+                //downloaded cdrs count
+                $.ajax({
+                    type: 'post',
+                    url: 'scripts/php/stats.php',
+                    data: {
+                        action: "read_count_downloaded_cdr_prepaid"
+                    },
+                    success: function (response) {
+                        // We get the element having id of display_info and put the response inside it
+                        $( '#stat_download_count_cdrs_prepaid' ).html(response);
+                    }
+                });
+                //downloaded cdrs count
+                $.ajax({
+                    type: 'post',
+                    url: 'scripts/php/stats.php',
+                    data: {
+                        action: "read_count_downloaded_cdr_postpaid"
+                    },
+                    success: function (response) {
+                        // We get the element having id of display_info and put the response inside it
+                        $( '#stat_download_count_cdrs_postpaid' ).html(response);
+                    }
+                });
+                //downloaded cdrs count
+                $.ajax({
+                    type: 'post',
+                    url: 'scripts/php/stats.php',
+                    data: {
+                        action: "read_count_downloaded_cdr_m2m"
+                    },
+                    success: function (response) {
+                        // We get the element having id of display_info and put the response inside it
+                        $( '#stat_download_count_cdrs_m2m' ).html(response);
                     }
                 });
             }

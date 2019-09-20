@@ -175,6 +175,28 @@
                         <td class="tm_s_d_c stat_value" id="stat_download_count_cdrs">
                             x
                         </td>
+                        
+                    </tr>
+                    <tr class="tm_s_d_c">
+                        <td class="tm_s_d_c">Počet stáhnutých CDR podle operátora</td>
+                        <td class="tm_s_d_c">Prepaid</td>
+                        <td class="tm_s_d_c stat_value" id="stat_download_count_cdrs_prepaid">
+                            x
+                        </td>
+                    </tr>
+                    <tr class="tm_s_d_c">
+                        <td class="tm_s_d_c"></td>
+                        <td class="tm_s_d_c">Postpaid</td>
+                        <td class="tm_s_d_c stat_value" id="stat_download_count_cdrs_postpaid">
+                            x
+                        </td>
+                    </tr>
+                    <tr class="tm_s_d_c">
+                        <td class="tm_s_d_c"></td>
+                        <td class="tm_s_d_c">M2M</td>
+                        <td class="tm_s_d_c stat_value" id="stat_download_count_cdrs_m2m">
+                            x
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -188,6 +210,12 @@
                     <li class="sm_h_c">Sjednocení jednotek SMS a MMS (nyní pouze jedno pole)</li>
                     <li class="sm_h_c">Pozadí řádku nad kterým je kurzor je nyní zvýrazněn</li>
                     <li class="sm_h_c">Pozadí řádku který je označen, je nyní zelené pro snadnější čitelnost</li>
+                </ul>
+            </div>
+            <div class="sm_h_c help_div">
+                <p class="sm_h_c">20.9.2019</p>
+                <ul class="sm_h_c">
+                    <li class="sm_h_c">Přidán rozpad statistik ke stažením jednotlivých operátorů</li>
                 </ul>
             </div>
         </div>

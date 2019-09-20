@@ -118,7 +118,15 @@ input#download_button:enabled:hover {
 .sliding_box_stats table tr {
     min-height: 20px;
 }
-.stat_value {
+#stat_download_count_cdrs {
     font-weight: bold;
-
+}
+#stat_cdr_count {
+    font-weight: bold;
+}
+#stat_visit_count {
+    font-weight: bold;
+}
+#stat_download_count {
+    font-weight: bold;
 }
