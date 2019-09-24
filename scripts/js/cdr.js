@@ -413,3 +413,29 @@ function check_cdr(table_td) {
     enable_download();
     setBackground();
 }
+/**-----------------FILE INPUT---------------/ */
+$( document ).ready( function() {
+    var fileInput = document.querySelector('input[type=file]');
+    var filenameContainer = document.querySelector('#filename');
+    
+    fileInput.addEventListener('change', function() {
+        filenameContainer.innerText = fileInput.value.split('\\').pop();
+        $.notify("Nahrán soubor: " + fileInput.value.split('\\').pop(), "success");
+        $( 'div.input_file' ).css('background-color', 'green');
+    });
+}); 
+function fileInput(chb) {
+    if($( '#file_activation' ).prop('checked') == true) {
+        $( '#msisdn' ).prop( "disabled", true );
+        $( '#imsi' ).prop( "disabled", true );
+        $( '#msisdn' ).css('background-color', 'rgb(180, 180, 180)');
+        $( '#imsi' ).css('background-color', 'rgb(180, 180, 180)');
+        $.notify("Soubor je aktivní", "success");
+    } else {
+        $( '#msisdn' ).prop( "disabled", false );
+        $( '#imsi' ).prop( "disabled", false );
+        $( '#msisdn' ).css('background-color', 'white');
+        $( '#imsi' ).css('background-color', 'white');
+        $.notify("Soubor je neaktivní", "error");
+    }
+}

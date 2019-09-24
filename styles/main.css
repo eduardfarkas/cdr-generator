@@ -305,3 +305,6 @@ th.th_comment {
 .box_table tbody tr:nth-child(even) {
     background-color: #DDDEDF;
 }
+td.cdr_name, input.cdr {
+    cursor: pointer;
+}

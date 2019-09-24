@@ -7,6 +7,7 @@ function get_data(checked_operator, checked_usageType) {
   var msisdn = $('#msisdn').val();
   var imsi = $('#imsi').val();
   var data_units = format_usage($('#data_units').val());
+  var data_units_unformated = $('#data_units').val();
   var voice_units = $('#voice_units').val();
   var formated_voice_units = format_voice_units($('#voice_units').val());
   var formated_apn_name = format_apn($('#apn').val());
@@ -1823,19 +1824,19 @@ function get_data(checked_operator, checked_usageType) {
         {
           name: "20617",
           comment: "Data consumption in nonEU - 444",
-          value: msisdn + "|193.239.182.193|20|" + data_units + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
+          value: msisdn + "|193.239.182.193|20|" + data_units_unformated + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dtu_grds03"
         },
         {
           name: "20618",
           comment: "Data consumption in WORLD - 444",
-          value: msisdn + "|193.27.231.1|20|" + data_units + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
+          value: msisdn + "|193.27.231.1|20|" + data_units_unformated + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dtu_grds03"
         },
         {
           name: "20998",
           comment: "Data consumption in OTHER UNKNOWN - 444",
-          value: msisdn + "|93.186.142.2|20|" + data_units + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
+          value: msisdn + "|93.186.142.2|20|" + data_units_unformated + "|1118591620|UTRAN||1897886976||" + timestamp() + "|",
           group: "dtu_grds03"
         }
       ]

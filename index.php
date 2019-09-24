@@ -62,6 +62,16 @@
                     <input class="sm_i_d_c" placeholder="Jednotky DATA" value="1024" min="0" max="19999999998" maxlength="11" step="1024" type="number" id="data_units" oninput="check_input('data'); maxLengthCheck(this); show_cdr();" onkeydown="return FilterInput(event)" onpaste="handlePaste(event)">
                     <span class="form_input_name sm_i_d_c">APN</span>
                     <input class="sm_i_d_c" placeholder="Název APN (max 64 znaků)" maxlength="64" id="apn" type="text" oninput="check_input('apn'); show_cdr();">
+                    
+                    
+                    <span class="form_input_name sm_i_d_c">Soubor (hromadná usage)</span>
+                    <label for="test" class="input_file sm_i_d_c">
+                        <div id="filename" class="input_file sm_i_d_c">Vybrat soubor</div>
+                        <input type="file" id="test" class="sm_i_d_c">
+                    </label>
+                    <table>
+                        <tr><td><span>Aktivovat data ze souboru</span></td><td><input type="checkbox" id="file_activation" oninput="fileInput();"></td>
+                    </table>
                 </fieldset>
                 <fieldset class="sm_i_d_c">
                     <legend class="sm_i_d_c">Typ operátora</legend>
