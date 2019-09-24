@@ -143,7 +143,6 @@ function show_cdr() {
     var cdrs = get_data(operator, usageType);
 
     var sms_mms_units = $( '#sms_mms_units').val();
-    //var mms_units = $( '#mms_units').val();
 
     var checkedCheckboxes = $( 'input[class~=cdr]:checked');
     var content = "";
@@ -414,28 +413,86 @@ function check_cdr(table_td) {
     setBackground();
 }
 /**-----------------FILE INPUT---------------/ */
-$( document ).ready( function() {
+
+//check for right extension
+function checkFile(sender) {
     var fileInput = document.querySelector('input[type=file]');
     var filenameContainer = document.querySelector('#filename');
-    
-    fileInput.addEventListener('change', function() {
+
+    var validExts = new Array(".txt");
+    var fileExt = sender.value;
+
+    console.log(fileExt);
+
+    fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+    if (validExts.indexOf(fileExt) < 0 && fileExt != "") {
+        alert("Nevalidní formát. Hoď sem " +
+                 validExts.toString());
+        $(sender).val("");
+
+        filenameContainer.innerText = "Vybrat soubor";
+        $.notify("Soubor nenahrán", "error");
+
+        $( 'div.input_file' ).css('background-color', 'orange');
+
+        return false;
+    }
+    if (fileExt == null || fileExt == "") {
+        console.log("nic");
+    }
+    else {
         filenameContainer.innerText = fileInput.value.split('\\').pop();
         $.notify("Nahrán soubor: " + fileInput.value.split('\\').pop(), "success");
+
         $( 'div.input_file' ).css('background-color', 'green');
-    });
-}); 
-function fileInput(chb) {
+
+        /* ----- */
+            var file = fileInput.files[0]; 
+
+            if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) { 
+                var contents = event.target.result;
+                console.log( "Got the file.\n" 
+                    +"name: " + file.name + "\n"
+                    +"type: " + file.type + "\n"
+                    +"size: " + file.size + " bytes\n"
+                    + "obsah: \n" + contents
+                );
+            }
+                reader.readAsText(file);
+            } else { 
+                alert("Nepodařilo se načíst soubor.");
+            }
+        /* ----- */
+
+        return true;
+    }
+}
+function fileInput() {
     if($( '#file_activation' ).prop('checked') == true) {
         $( '#msisdn' ).prop( "disabled", true );
         $( '#imsi' ).prop( "disabled", true );
+
         $( '#msisdn' ).css('background-color', 'rgb(180, 180, 180)');
+        $( '#msisdn' ).css('border', '1px solid rgb(180, 180, 180)');
         $( '#imsi' ).css('background-color', 'rgb(180, 180, 180)');
-        $.notify("Soubor je aktivní", "success");
+        $( '#imsi' ).css('border', '1px solid rgb(180, 180, 180)');
+
+        $.notify("Načítání ze souboru je aktivní", "success");
     } else {
         $( '#msisdn' ).prop( "disabled", false );
         $( '#imsi' ).prop( "disabled", false );
+
         $( '#msisdn' ).css('background-color', 'white');
+        $( '#msisdn' ).css('border', '1px solid #DDDDDD')
         $( '#imsi' ).css('background-color', 'white');
-        $.notify("Soubor je neaktivní", "error");
+        $( '#imsi' ).css('border', '1px solid #DDDDDD');
+
+        $.notify("Načítání ze souboru je neaktivní", "error");
     }
 }
+
+
+
+  

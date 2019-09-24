@@ -67,7 +67,7 @@
                     <span class="form_input_name sm_i_d_c">Soubor (hromadná usage)</span>
                     <label for="test" class="input_file sm_i_d_c">
                         <div id="filename" class="input_file sm_i_d_c">Vybrat soubor</div>
-                        <input type="file" id="test" class="sm_i_d_c">
+                        <input type="file" id="file" class="sm_i_d_c" onchange="checkFile(this);">
                     </label>
                     <table>
                         <tr><td><span>Aktivovat data ze souboru</span></td><td><input type="checkbox" id="file_activation" oninput="fileInput();"></td>
