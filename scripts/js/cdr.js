@@ -140,37 +140,94 @@ function show_cdr_menu_content() {
 function show_cdr() {
     var operator = $('input[name=operator]:checked', '.input_form').val();
     var usageType = $('input[name=usage]:checked', '.input_form').val();
-    var cdrs = get_data(operator, usageType);
-
+    var msisdn = $('#msisdn').val();
+    var imsi = $('#imsi').val();
+    
     var sms_mms_units = $( '#sms_mms_units').val();
 
     var checkedCheckboxes = $( 'input[class~=cdr]:checked');
     var content = "";
 
-    for(i = 0; i < checkedCheckboxes.length; i++) {
-        for(j = 0; j < cdrs.length; j++) { //for each cdr
-            if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
-                if(cdrs[j].group == "xml") {
-                    //cdrs += cdrs[j].name + " - " + cdrs[j].comment + ":\r\n";
-                    //cdrs += "\r\n";
-                    content += cdrs[j].value + "\r\n";
-                    content += "----------------------------------------------------------------------------------------------------\r\n";
-                } else {
+    if($( '#file_activation' ).prop('disabled') == false && $( '#file_activation' ).prop('checked') == true) {
+         /* ----- */
+        var fileInput = document.querySelector('input[type=file]');
+        var file = fileInput.files[0]; 
+        var dataArray = new Array();
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) { 
+                var contents = event.target.result;
+                /*console.log( "Got the file.\n" 
+                    +"name: " + file.name + "\n"
+                    +"type: " + file.type + "\n"
+                    +"size: " + file.size + " bytes\n"
+                    + "obsah: \n" + contents
+                );*/
 
-                    if(usageType == "sms" || usageType == "mms") {
-                        for(k = 0; k < sms_mms_units; k++) {
-                            content += cdrs[j].value + "\r\n";
+                dataArray = contents.split("\n").map(function(e) {
+                    return e.split("\t").map(String);
+                });
+
+                for(d = 0; d < dataArray.length; d++) {
+                    if(dataArray[d][0].length != 12 && dataArray[d][1].length != 15) {
+                        alert("Data na řádku: " + (d+1) + " nejsou validní a jsou přeskočena");
+                        continue;
+                    }
+                    var cdrs = get_data(operator, usageType, dataArray[d][0], dataArray[d][1].replace(/(\r\n|\n|\r)/gm, ""), timestamp());
+                    
+                    for(i = 0; i < checkedCheckboxes.length; i++) {
+                        for(j = 0; j < cdrs.length; j++) { //for each cdr
+                            if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
+                                if(cdrs[j].group == "xml") {
+                                    content += cdrs[j].value + "\r\n";
+                                    content += "----------------------------------------------------------------------------------------------------\r\n";
+                                } else {
+                
+                                    if(usageType == "sms" || usageType == "mms") {
+                                        for(k = 0; k < sms_mms_units; k++) {
+                                            content += cdrs[j].value + "\r\n";
+                                        }
+                                    }
+                                    else if(usageType != "sms" && usageType != "mms") {
+                                        content += cdrs[j].value + "\r\n";
+                                    }
+                                }
+                            }
                         }
                     }
-                    else if(usageType != "sms" && usageType != "mms") {
+                    $( '#cdr_container').val(content);
+                }
+            }
+            reader.readAsText(file);
+        } else { 
+            alert("Nepodařilo se načíst soubor.");
+        }
+        /* ----- */
+    }
+    else {
+        var cdrs = get_data(operator, usageType, msisdn, imsi, timestamp());
+        for(i = 0; i < checkedCheckboxes.length; i++) {
+            for(j = 0; j < cdrs.length; j++) { //for each cdr
+                if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
+                    if(cdrs[j].group == "xml") {
                         content += cdrs[j].value + "\r\n";
+                        content += "----------------------------------------------------------------------------------------------------\r\n";
+                    } else {
+    
+                        if(usageType == "sms" || usageType == "mms") {
+                            for(k = 0; k < sms_mms_units; k++) {
+                                content += cdrs[j].value + "\r\n";
+                            }
+                        }
+                        else if(usageType != "sms" && usageType != "mms") {
+                            content += cdrs[j].value + "\r\n";
+                        }
                     }
                 }
             }
         }
+        $( '#cdr_container').val(content);
     }
-
-    $( '#cdr_container').val(content);
 }
 
 function enable_download() {
@@ -184,15 +241,18 @@ function enable_download() {
 
 function download_cdr() {
     var confirm_result = true;
-    if($( '#msisdn' ).val().toString().length != 12 && $( '#imsi' ).val().toString().length != 15) {
-        confirm_result = confirm("MSISDN nemá 12 cifer a IMSI nemá 15 cifer, chceš pokračovat?");
+    if(($( '#file_activation' ).prop('disabled') == true) || ($( '#file_activation' ).prop('disabled') == false && $( '#file_activation' ).prop('checked') == false)) {
+        if($( '#msisdn' ).val().toString().length != 12 && $( '#imsi' ).val().toString().length != 15) {
+            confirm_result = confirm("MSISDN nemá 12 cifer a IMSI nemá 15 cifer, chceš pokračovat?");
+        }
+        if($( '#msisdn' ).val().toString().length != 12 && $( '#imsi' ).val().toString().length == 15) {
+            confirm_result = confirm("MSISDN nemá 12 cifer, chceš pokračovat?");
+        }
+        if($( '#imsi' ).val().toString().length != 15 && $( '#msisdn' ).val().toString().length == 12) {
+            confirm_result = confirm("IMSI nemá 15 cifer, chceš pokračovat?");
+        }
     }
-    if($( '#msisdn' ).val().toString().length != 12 && $( '#imsi' ).val().toString().length == 15) {
-        confirm_result = confirm("MSISDN nemá 12 cifer, chceš pokračovat?");
-    }
-    if($( '#imsi' ).val().toString().length != 15 && $( '#msisdn' ).val().toString().length == 12) {
-        confirm_result = confirm("IMSI nemá 15 cifer, chceš pokračovat?");
-    }
+    
     if($( '#voice_units' ).val() < 1) {
         confirm_result = confirm("VOICE jednotky jsou menší než 1, chceš pokračovat?");
     }
@@ -421,10 +481,10 @@ function checkFile(sender) {
 
     var validExts = new Array(".txt");
     var fileExt = sender.value;
-
-    console.log(fileExt);
+    
 
     fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+    
     if (validExts.indexOf(fileExt) < 0 && fileExt != "") {
         alert("Nevalidní formát. Hoď sem " +
                  validExts.toString());
@@ -432,45 +492,31 @@ function checkFile(sender) {
 
         filenameContainer.innerText = "Vybrat soubor";
         $.notify("Soubor nenahrán", "error");
-
+        $( '#file_activation' ).prop('disabled', true);
         $( 'div.input_file' ).css('background-color', 'orange');
-
+        
         return false;
     }
     if (fileExt == null || fileExt == "") {
-        console.log("nic");
+        filenameContainer.innerText = "Vybrat soubor";
+        $.notify("Soubor nenahrán", "error");
+        $( '#file_activation' ).prop('disabled', true);
+        $( 'div.input_file' ).css('background-color', 'orange');
+        alert("Nezvolen žádný soubor");
+
+        return false;
     }
-    else {
+    else {    
         filenameContainer.innerText = fileInput.value.split('\\').pop();
         $.notify("Nahrán soubor: " + fileInput.value.split('\\').pop(), "success");
+        $( '#file_activation' ).prop('disabled', false);
+        $( 'div.input_file' ).css('background-color', 'green');  
 
-        $( 'div.input_file' ).css('background-color', 'green');
-
-        /* ----- */
-            var file = fileInput.files[0]; 
-
-            if (file) {
-            var reader = new FileReader();
-            reader.onload = function(event) { 
-                var contents = event.target.result;
-                console.log( "Got the file.\n" 
-                    +"name: " + file.name + "\n"
-                    +"type: " + file.type + "\n"
-                    +"size: " + file.size + " bytes\n"
-                    + "obsah: \n" + contents
-                );
-            }
-                reader.readAsText(file);
-            } else { 
-                alert("Nepodařilo se načíst soubor.");
-            }
-        /* ----- */
-
-        return true;
+        return true; 
     }
 }
 function fileInput() {
-    if($( '#file_activation' ).prop('checked') == true) {
+    if($( '#file_activation' ).prop('disabled') == false && $( '#file_activation' ).prop('checked') == true) {
         $( '#msisdn' ).prop( "disabled", true );
         $( '#imsi' ).prop( "disabled", true );
 
@@ -480,7 +526,8 @@ function fileInput() {
         $( '#imsi' ).css('border', '1px solid rgb(180, 180, 180)');
 
         $.notify("Načítání ze souboru je aktivní", "success");
-    } else {
+    }
+    else {
         $( '#msisdn' ).prop( "disabled", false );
         $( '#imsi' ).prop( "disabled", false );
 
@@ -493,6 +540,3 @@ function fileInput() {
     }
 }
 
-
-
-  

@@ -67,10 +67,10 @@
                     <span class="form_input_name sm_i_d_c">Soubor (hromadná usage)</span>
                     <label for="test" class="input_file sm_i_d_c">
                         <div id="filename" class="input_file sm_i_d_c">Vybrat soubor</div>
-                        <input type="file" id="file" class="sm_i_d_c" onchange="checkFile(this);">
+                        <input type="file" id="file" class="sm_i_d_c" onchange="checkFile(this); show_cdr(); fileInput();">
                     </label>
                     <table>
-                        <tr><td><span>Aktivovat data ze souboru</span></td><td><input type="checkbox" id="file_activation" oninput="fileInput();"></td>
+                        <tr><td><span>Aktivovat data ze souboru</span></td><td><input type="checkbox" id="file_activation" oninput="fileInput(); show_cdr();" disabled></td>
                     </table>
                 </fieldset>
                 <fieldset class="sm_i_d_c">
@@ -226,6 +226,17 @@
                 <p class="sm_h_c">20.9.2019</p>
                 <ul class="sm_h_c">
                     <li class="sm_h_c">Přidán rozpad statistik ke stažením jednotlivých operátorů</li>
+                </ul>
+            </div>
+            <div class="sm_h_c help_div">
+                <p class="sm_h_c">25.9.2019</p>
+                <ul class="sm_h_c">
+                    <li class="sm_h_c">
+                        Přidána funkce vytvoření hromadné usage<br>
+                        ZATÍM NENÍ IMPLEMENTOVÁNO PARSOVÁNÍ NA SOUBORY PO 2000 ZÁZNAMECH<br>
+                        Použití: nahraj .txt soubor s MSISDN a IMSI. ( formát je MSISDN[tabulátor]IMSI[enter] )<br>
+                        Pro načtení dat ze souboru zaškrtni "Aktivovat data ze souboru".
+                    </li>
                 </ul>
             </div>
         </div>
