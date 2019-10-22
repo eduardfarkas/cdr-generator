@@ -7381,19 +7381,19 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
         },
         {
           name: "19001",
-          comment: "INT_VOICE_ZONE_A",
+          comment: "roam voice MO ČR -> EU",
           value: "3                                 1 0  " + imsi + "                 " + msisdn + "        5  460123123123            5  460123123123            5     17                     " + timestamp + formated_voice_units + "          2302  " + timestamp + "BABA" + msisdn + "               " + msisdn + "        5  ",
           group: "gvoice"
         },
         {
           name: "19002",
-          comment: "INT_VOICE_ZONE_B",
+          comment: "roam voice MO ČR -> nonEU",
           value: "3                                 1 0  " + imsi + "                 " + msisdn + "        5  355123123123            5  355123123123            5     17                     " + timestamp + formated_voice_units + "          2302  " + timestamp + "BABA" + msisdn + "               " + msisdn + "        5  ",
           group: "gvoice"
         },
         {
           name: "19003",
-          comment: "INT_VOICE_ZONE_C",
+          comment: "roam voice MO ČR -> WORLD",
           value: "3                                 1 0  " + imsi + "                 " + msisdn + "        5  100123123123            5  100123123123            5     17                     " + timestamp + formated_voice_units + "          2302  " + timestamp + "BABA" + msisdn + "               " + msisdn + "        5  ",
           group: "gvoice"
         },
