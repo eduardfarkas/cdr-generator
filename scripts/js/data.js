@@ -772,85 +772,85 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
         },
         {
           name: "18001",
-          comment: "smazaný key E2700",
+          comment: "SMS iPhone",
           value: msisdn + "|447537410297|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18004",
-          comment: "999555",
+          comment: "nastavení internetu a MMS zpráv",
           value: msisdn + "|420999555|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18005",
-          comment: "999888",
+          comment: "horoskopy",
           value: msisdn + "|420999888|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18006",
-          comment: "999333",
+          comment: "zjištění operátora pro tel. číslo",
           value: msisdn + "|420999333|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18007",
-          comment: "999222",
+          comment: "ICQ v mobilu (zrušeno)",
           value: msisdn + "|420999222|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18008",
-          comment: "999111",
+          comment: "SMS handler pro O2",
           value: msisdn + "|420999111|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18009",
-          comment: "999xxx exact length",
+          comment: "další služby?",
           value: msisdn + "|420999123|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18021",
-          comment: "SMS s doručenkou (876xy)",
+          comment: "SMS s doručenkou",
           value: msisdn + "|42087655|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18101",
-          comment: "VOA",
+          comment: "CC VOA",
           value: msisdn + "|420267267061|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18101",
-          comment: "VOB",
+          comment: "CC VOB",
           value: msisdn + "|420841112255|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18101",
-          comment: "VOD",
+          comment: "CC VOD",
           value: msisdn + "|420778820820|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18102",
-          comment: "VOA",
+          comment: "SMS handler VOA",
           value: msisdn + "|420999340|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18102",
-          comment: "VOB",
+          comment: "SMS handler VOB",
           value: msisdn + "|420999346|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
         {
           name: "18102",
-          comment: "VOD",
+          comment: "SMS handler VOD",
           value: msisdn + "|420999348|42060202510|401D413804210A||" + timestamp + "|",
           group: "smo_gsm41"
         },
@@ -5094,43 +5094,43 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
         },
         {
           name: "18001",
-          comment: "",
+          comment: "SMS iPhone",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  447537410297                  5  5  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18004",
-          comment: "",
+          comment: "nastavení internetu a MMS zpráv",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999555                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18005",
-          comment: "",
+          comment: "horoskopy",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999888                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18006",
-          comment: "",
+          comment: "zjištění operátora pro tel. číslo",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999333                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18007",
-          comment: "",
+          comment: "ICQ v mobilu (zrušeno)",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999222                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18008",
-          comment: "možná neimplementováno, generuje 18007?",
+          comment: "SMS handler pro O2",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999111                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18009",
-          comment: "možná neimplementováno, generuje 18007?",
+          comment: "další služby?",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999123                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
@@ -5142,71 +5142,71 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
         },
         {
           name: "18021",
-          comment: "",
+          comment: "SMS s doručenkou",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  87655                         5  4  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18101",
-          comment: "VOE1",
+          comment: "CC VOE1",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  558530900                     5  4  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18101",
-          comment: "VOE2",
+          comment: "CC VOE2",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  727610123                     5  4  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18101",
-          comment: "VOF",
+          comment: "CC VOF",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  380900380                     5  4  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         /*
         {
             name: "18102",
-            comment: "VOA",
+            comment: "SMS handler VOA",
             value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999340                        5  2  420602020000        2300  0  1542550  " + timestamp,
             group: "sms"
         },
         {
             name: "18102",
-            comment: "VOB",
+            comment: "SMS handler VOB",
             value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999346                        5  2  420602020000        2300  0  1542550  " + timestamp,
             group: "sms"
         },
         */
         {
           name: "18102",
-          comment: "VOC",
+          comment: "SMS handler VOC",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999345                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         /*
         {
             name: "18102",
-            comment: "VOD",
+            comment: "SMS handler VOD",
             value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999348                        5  2  420602020000        2300  0  1542550  " + timestamp,
             group: "sms"
         },
         */
         {
           name: "18102",
-          comment: "VOE1",
+          comment: "SMS handler VOE1",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999343                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18102",
-          comment: "VOE2",
+          comment: "SMS handler VOE2",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  999342                        5  2  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
         {
           name: "18102",
-          comment: "VOF",
+          comment: "SMS handler VOF",
           value: "165  8  83984   0  185396543910904420602020000        " + imsi + " 500161112488810 " + msisdn + "        0  3  420602302522            420602909909        11   509  " + timestamp + "0         0  34 3  1  601587541                     5  5  420602020000        2300  0  1542550  " + timestamp,
           group: "sms"
         },
