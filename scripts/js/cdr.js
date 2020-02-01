@@ -22,7 +22,7 @@ function show_cdr_menu_content() {
 
         //[id, chargingClass, group, chargingCode]
         var lastCdr =       [-1, 0, -1, 0]; //last used cdr
-        var currentCdr =    [-1, 0, -1, 0];
+        var currentCdr =    [-1, 0, -1, 0, false];
         var nextCdr =       [-1, 0, -1, 0, false]; // true = is last, false = not last
 
         for(j = 0; j < cdrs.length; j++) { //for each cdr
@@ -52,7 +52,7 @@ function show_cdr_menu_content() {
                     currentCdr[2] != lastCdr[2]
                 ) {
                     if(
-                        (nextCdr[1] == currentCdr[1] && nextCdr[2] == currentCdr[2])
+                        (nextCdr[1] == currentCdr[1] && nextCdr[2] == currentCdr[2]) 
                     ) { //show start image
                         chargingClass = "<td class='cdr-chargingClass cdr-chargingClass-start'><div><img src='images/charging-class-start.png'></img><input type='checkbox' name='cdr-chargingClass' class='cdr-chargingClass " + groups[i] + " " + cdrs[j].name.substring(0, 2) + "' id='group" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); show_info_cdrCount(); check_all_by_chargingClass(this); setBackground();'></div></td>";
                     }
@@ -117,7 +117,7 @@ function show_cdr_menu_content() {
                     chargingClass +
                     chargingCode +
                     "<td class='cdr_name' onclick='check_cdr(this);'>" + cdrs[j].name + "</td>" +
-                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground();'></td>" +
+                    "<td class='cdr_checkbox'><input type='checkbox' name='cdr' class='cdr " + groups[i] + " " + cdrs[j].name.substring(0, 2) + " " + cdrs[j].name + " " + cdrs[j].extension + "' id='" + cdrs[j].id + "' oninput='show_cdr(); group_check(this); enable_download(); show_info_cdrCount(); setBackground();'></td>" +
                     "<td class='cdr_comment'>" + cdrs[j].comment + "</td>"
                 "</tr>";
             }
@@ -168,9 +168,11 @@ function show_cdr() {
                     return e.split("\t").map(String);
                 });
 
+                var faultDataRows = "";
+
                 for(d = 0; d < dataArray.length; d++) {
                     if(dataArray[d][0].length != 12 && dataArray[d][1].length != 15) {
-                        alert("Data na řádku: " + (d+1) + " nejsou validní a jsou přeskočena");
+                        faultDataRows += "Data na řádku: " + (d+1) + " nejsou validní a jsou přeskočena\n";
                         continue;
                     }
                     var cdrs = get_data(operator, usageType, dataArray[d][0], dataArray[d][1].replace(/(\r\n|\n|\r)/gm, ""), timestamp());
@@ -178,7 +180,7 @@ function show_cdr() {
                     for(i = 0; i < checkedCheckboxes.length; i++) {
                         for(j = 0; j < cdrs.length; j++) { //for each cdr
                             if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
-                                if(cdrs[j].group == "xml") {
+                                if(cdrs[j].extension == "xml") {
                                     content += cdrs[j].value + "\r\n";
                                     content += "----------------------------------------------------------------------------------------------------\r\n";
                                 } else {
@@ -196,6 +198,8 @@ function show_cdr() {
                         }
                     }
                     $( '#cdr_container').val(content);
+                } if(faultDataRows != "") {
+                    alert(faultDataRows);
                 }
             }
             reader.readAsText(file);
@@ -209,7 +213,7 @@ function show_cdr() {
         for(i = 0; i < checkedCheckboxes.length; i++) {
             for(j = 0; j < cdrs.length; j++) { //for each cdr
                 if(cdrs[j].id == checkedCheckboxes[i].id) { //set box for each group
-                    if(cdrs[j].group == "xml") {
+                    if(cdrs[j].extension == "xml") {
                         content += cdrs[j].value + "\r\n";
                         content += "----------------------------------------------------------------------------------------------------\r\n";
                     } else {
@@ -270,9 +274,11 @@ function download_cdr() {
             }
         };
 
-        var group = $( 'input[class~=cdr]:checked' )[0].classList[1];
+        //vymyslet jak vytáhnout koncovku
+        var extension = $( 'input[class~=cdr]:checked' )[0].classList[4];
+       
 
-        if(group == "xml") {
+        if(extension == "xml") {
             var data = get_data("all", "all");
 
 
@@ -287,7 +293,7 @@ function download_cdr() {
                         $.each( data_operators, function( data_usageType, cdr ) {
                             for(j = 0; j < cdr.length; j++) { //for each cdr
                                 if(cdr[j].id == $( 'input[class~=cdr]:checked' )[i].id) { //set box for each group
-                                    name_array[i] = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
+                                    name_array[i] = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].extension;
                                 }
                             }
                         });
@@ -302,7 +308,7 @@ function download_cdr() {
 
                 zip.generateAsync({type:"blob"}).then(function(content) {
                     saveAs(content, "xml.zip");
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
                 });
 
             } else {
@@ -312,7 +318,7 @@ function download_cdr() {
                     $.each( data_operators, function( data_usageType, cdr ) {
                         for(j = 0; j < cdr.length; j++) { //for each cdr
                             if(cdr[j].id == $( 'input[class~=cdr]:checked' )[0].id) { //set box for each group
-                                filename = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") + "." + cdr[j].group;
+                                filename = timestamp() + "_" + cdr[j].comment.split(" ").join("_").replace("->", "to").replace("ČR", "CR") +"." + cdr[j].extension;
                             }
                         }
                     });
@@ -323,40 +329,40 @@ function download_cdr() {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
-                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
             }
         } else {
             var operator = $('input[name=operator]:checked', '.input_form').val();
             if(operator == "prepaid") {
                 var content = $( '#cdr_container' ).val();
-                var filename = "xdr_" + timestamp() + "_cz_" + group + "_" + $( '#msisdn' ).val() + ".xdr";
+                var filename = "xdr_" + timestamp() + "_cz_" + extension + "_" + $( '#msisdn' ).val() + ".xdr";
 
                 var blob = new Blob([content], {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
                 if($('input[name=usage]:checked', '.input_form').val() == "sms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
                     console.log("sms, mms usage download info");
                 }
                 if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
                     console.log("voice/data usage download info");
                 }
             } else {
                 var content = $( '#cdr_container' ).val();
-                var filename = timestamp() + "_" +$( '#msisdn' ).val() + "." + group;
+                var filename = timestamp() + "_" +$( '#msisdn' ).val() + "." + extension;
 
                 var blob = new Blob([content], {
                     type: "text/plain;charset=utf-8"
                 });
                 saveAs(blob, filename);
                 if($('input[name=usage]:checked', '.input_form').val() == "sms") {
-                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                    add_download_info(($( '.cdr:checked' ).length) * $( '#sms_mms_units' ).val(), $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
                     console.log("sms usage download info");
                 }
                 if ($('input[name=usage]:checked', '.input_form').val() == "voice" || $('input[name=usage]:checked', '.input_form').val() == "data") {
-                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[1]);
+                    add_download_info($( '.cdr:checked' ).length, $( 'input[name=operator]:checked' ).val(), $( 'input[name=usage]:checked' ).val(), $( 'input[class~=cdr]:checked' )[0].classList[4]);
                     console.log("voice/data usage download info");
                 }
             }

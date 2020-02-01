@@ -239,6 +239,17 @@
                     </li>
                 </ul>
             </div>
+            <div class="sm_h_c help_div">
+                <p class="sm_h_c">29.11.2019</p>
+                <ul class="sm_h_c">
+                    <li class="sm_h_c">Přidány nové CDR pro data usage Postpaid a M2M</li>
+                    <li class="sm_h_c">Přidáno nové CDR na 10% DPH (Postpaid - MMS)</li>
+                    <li class="sm_h_c">Změněna logika zobrazování skupin. Teď nezávisle na formátu souboru</li>
+                    <li class="sm_h_c">Do APN nyní nejde zadat diakritiku (dělá velké problémy při reportingu)</li>
+                    <li class="sm_h_c">U M2M lze přepsat původní APN, při nevyplnění APN se zobrazí původní. <br> (APN slouží jen pro popisné účely, v billingu se s ní nepracuje)</li>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="container">
             <div class="top_menu_bar">
