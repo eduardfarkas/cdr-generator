@@ -265,15 +265,39 @@ function add_spaces_to_64_chars(text) {
     }
 }
 
-function format_apn(text) {
-    number_of_spaces_needed = 64 - text.length;
+function format_apn(text, original_value) {
+    text_number_of_spaces_needed           = 64 - text.length;
+    original_value_number_of_spaces_needed = 64 - original_value.length;
     spaces = "";
 
-    for(i = 0; i < number_of_spaces_needed; i++) {
-        spaces += " ";
-    }
+    if(original_value != "" && text != "") {
+        for(i = 0; i < text_number_of_spaces_needed; i++) {
+            spaces += " ";
+        }
 
-    return (text + spaces);
+        return (text + spaces).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+    if(original_value == "" && text != "") {
+        for(i = 0; i < original_value_number_of_spaces_needed; i++) {
+            spaces += " ";
+        }
+
+        return (text + spaces).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+    if(original_value != "" && text == "") {
+        for(i = 0; i < original_value_number_of_spaces_needed; i++) {
+            spaces += " ";
+        }
+
+        return (original_value + spaces).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+    if(original_value == "" && text == "") {
+        for(i = 0; i < original_value_number_of_spaces_needed; i++) {
+            spaces += " ";
+        }
+
+        return (original_value + spaces).normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    } 
 }
 //------------INFO----------//
 function show_info_msisdn() {
