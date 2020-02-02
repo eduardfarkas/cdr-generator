@@ -23866,54 +23866,7 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
 
       ],
       data: [ //groups: lte
-        {
-          name: "HOME",
-          comment: "<b>ČR</b> (Data)",
-          value: "07" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          160.218.032.068                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
-        {
-          name: "ROAM",
-          comment: "<b>EU</b> (ROAMING_DATA_1)",
-          value: "05" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          193.016.219.096                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
-        {
-          name: "ROAM",
-          comment: "<b>nonEU</b> (ROAMING_DATA_2)",
-          value: "05" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          193.239.182.193                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
-        {
-          name: "ROAM",
-          comment: "<b>WORLD</b> (ROAMING_DATA_3)",
-          value: "05" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          170.051.252.001                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
-        {
-          name: "ROAM",
-          comment: "<b>WORLD</b> (ROAMING_DATA_4)",
-          value: "05" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          193.027.231.001                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
-        {
-          name: "ROAM",
-          comment: "<b>ŠVÝCARSKO</b> (ROAMING_DATA_5)",
-          value: "05" + imsi + " " + msisdn + "      " + format_apn($( '#apn' ).val(), "") + "                                                                " + timestamp + "000001          094.102.164.000                      " + data_units + "                  160.218.032.068                                  ",
-          group: "first-old",
-          is_used: true,
-          extension:  "lte"
-        },
+        
         /* nové */ 
         {
           name: "HOME",
