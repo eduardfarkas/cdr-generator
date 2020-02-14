@@ -8834,7 +8834,7 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
       ],
       data: [ //lte
         //--------------------------//  
-        /* staré */
+        /* staré 
                 {
           name: "data",
           comment: "data home placene",
@@ -8875,7 +8875,7 @@ function get_data(checked_operator, checked_usageType, msisdn, imsi, ts) {
           is_used: true,
           extension:  "lte"
         },
-        //--------------------------//
+        //--------------------------//*/
         
         /*
         {
